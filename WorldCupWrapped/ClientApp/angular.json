@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "WorldCupWrapped"
+  "defaultProject": "WorldCupWrapped",
+  "cli": {
+    "analytics": false
+  }
 }
