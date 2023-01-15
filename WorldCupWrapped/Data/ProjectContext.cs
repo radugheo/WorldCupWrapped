@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WorldCupWrapped.Models;
 
 namespace WorldCupWrapped.Data
 {
@@ -27,12 +28,12 @@ namespace WorldCupWrapped.Data
 
             modelBuilder.Entity<TeamTrophy>()
                 .HasOne(tt => tt.Team)
-                .WithMany(t => t.TeamTrophies)
+                .WithMany(t => t.TeamsTrophies)
                 .HasForeignKey(tt => tt.TeamId);
 
             modelBuilder.Entity<TeamTrophy>()
                 .HasOne(tt => tt.Trophy)
-                .WithMany(t => t.TeamTrophies)
+                .WithMany(t => t.TeamsTrophies)
                 .HasForeignKey(tt => tt.TrophyId);
 
             modelBuilder.Entity<MatchReferee>()
@@ -40,12 +41,12 @@ namespace WorldCupWrapped.Data
 
             modelBuilder.Entity<MatchReferee>()
                 .HasOne(mr => mr.Match)
-                .WithMany(m => m.MatchReferees)
+                .WithMany(m => m.MatchesReferees)
                 .HasForeignKey(mr => mr.MatchId);
 
             modelBuilder.Entity<MatchReferee>()
                 .HasOne(mr => mr.Referee)
-                .WithMany(r => r.MatchReferees)
+                .WithMany(r => r.MatchesReferees)
                 .HasForeignKey(mr => mr.RefereeId);
 
             modelBuilder.Entity<Stadium>()
