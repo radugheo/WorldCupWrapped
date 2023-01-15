@@ -12,11 +12,12 @@ namespace WorldCupWrapped.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
-
+        
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
         }
+        
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
