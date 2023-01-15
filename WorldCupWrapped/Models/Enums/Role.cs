@@ -1,8 +1,10 @@
-﻿namespace Demo.Models.Enums
+﻿namespace WorldCupWrapped.Models.Enums
 {
     public enum Role
     {
         Admin,
-        User
+        Moderator,
+        User,
+        Guest
     }
 }
