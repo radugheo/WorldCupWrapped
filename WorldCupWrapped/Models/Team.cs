@@ -1,4 +1,4 @@
-﻿using Lab3_14.Models.Base;
+﻿using WorldCupWrapped.Models.Base;
 
 namespace WorldCupWrapped.Models
 {
