@@ -1,4 +1,4 @@
-﻿using Lab3_14.Models.Base;
+﻿using WorldCupWrapped.Models.Base;
 
 namespace WorldCupWrapped.Models
 {
@@ -6,6 +6,6 @@ namespace WorldCupWrapped.Models
     {
         public string Name { get; set; }
         public string Nationality { get; set; }
-        public ICollection<MatchReferee> MatchesReferees { get; set; }
+        public ICollection<MatchReferee>? MatchesReferees { get; set; }
     }
 }

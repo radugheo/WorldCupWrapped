@@ -1,4 +1,4 @@
-﻿using Lab3_14.Models.Base;
+﻿using WorldCupWrapped.Models.Base;
 
 namespace WorldCupWrapped.Models
 {
@@ -7,6 +7,6 @@ namespace WorldCupWrapped.Models
         public string Name { get; set; }
         public string Nationality { get; set; }
         public int Age { get; set; }
-        public Team Team { get; set; }
+        public Team? Team { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Lab3_14.Models.Base;
+﻿using WorldCupWrapped.Models.Base;
 
 namespace WorldCupWrapped.Models
 {
@@ -8,7 +8,7 @@ namespace WorldCupWrapped.Models
         public int Capacity { get; set; }
         public City City { get; set; }
         public Guid CityId { get; set; }
-        public ICollection<Match> Matches { get; set; }
+        public ICollection<Match>? Matches { get; set; }
         public int FoundationYear { get; set; }
         public string Picture { get; set; }
     }
