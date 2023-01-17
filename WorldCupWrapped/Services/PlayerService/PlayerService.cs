@@ -20,9 +20,9 @@ namespace WorldCupWrapped.Services.PlayerService
             return result;
         }
 
-        Task<List<PlayerDto>> IPlayerService.GetAllPlayers()
-        {
-            throw new NotImplementedException();
-        }
+        //Task<List<PlayerDto>> IPlayerService.GetAllPlayers()
+        //{
+          //  throw new NotImplementedException();
+        //}
     }
 }

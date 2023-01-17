@@ -5,6 +5,13 @@ namespace WorldCupWrapped.Data
 {
     public class ProjectContext : DbContext
     {
+        
+
+        public ProjectContext(DbContextOptions<ProjectContext> options) : base(options)
+        {
+            
+        }
+
         public DbSet<Team> Teams { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Manager> Managers { get; set; }
@@ -16,13 +23,9 @@ namespace WorldCupWrapped.Data
         public DbSet<Match> Matches { get; set; }
         public DbSet<MatchReferee> MatchReferees { get; set; }
 
-        public ProjectContext(DbContextOptions<ProjectContext> options) : base(options)
-        {
-            
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<TeamTrophy>()
                 .HasKey(t => new { t.TeamId, t.TrophyId });
 
