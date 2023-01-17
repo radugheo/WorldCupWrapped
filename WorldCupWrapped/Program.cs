@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 using Microsoft.EntityFrameworkCore;
 using WorldCupWrapped.Data;
+=======
+>>>>>>> master
 using WorldCupWrapped.Helpers.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +18,9 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddRepositories();
+builder.Services.AddServices();
 
 builder.Services.AddRepositories();
 builder.Services.AddServices();
