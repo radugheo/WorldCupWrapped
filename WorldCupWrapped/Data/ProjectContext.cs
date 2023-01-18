@@ -21,18 +21,20 @@ namespace WorldCupWrapped.Data
             
         }
 
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TeamTrophy>()
                 .HasKey(t => new { t.TeamId, t.TrophyId });
 
             modelBuilder.Entity<TeamTrophy>()
-                .HasOne(tt => tt.Team)
+                .HasOne<Team>(tt => tt.Team)
                 .WithMany(t => t.TeamsTrophies)
                 .HasForeignKey(tt => tt.TeamId);
 
             modelBuilder.Entity<TeamTrophy>()
-                .HasOne(tt => tt.Trophy)
+                .HasOne<Trophy>(tt => tt.Trophy)
                 .WithMany(t => t.TeamsTrophies)
                 .HasForeignKey(tt => tt.TrophyId);
 
@@ -40,12 +42,12 @@ namespace WorldCupWrapped.Data
                 .HasKey(m => new { m.MatchId, m.RefereeId });
 
             modelBuilder.Entity<MatchReferee>()
-                .HasOne(mr => mr.Match)
+                .HasOne<Match>(mr => mr.Match)
                 .WithMany(m => m.MatchesReferees)
                 .HasForeignKey(mr => mr.MatchId);
 
             modelBuilder.Entity<MatchReferee>()
-                .HasOne(mr => mr.Referee)
+                .HasOne<Referee>(mr => mr.Referee)
                 .WithMany(r => r.MatchesReferees)
                 .HasForeignKey(mr => mr.RefereeId);
 
@@ -54,9 +56,9 @@ namespace WorldCupWrapped.Data
                 .WithMany(c => c.Stadiums)
                 .HasForeignKey(s => s.CityId);
 
-            modelBuilder.Entity<Team>()
-                .HasOne(t => t.Manager)
-                .WithOne(m => m.Team)
+            modelBuilder.Entity<Manager>()
+                .HasOne(m => m.Team)
+                .WithOne(t => t.Manager)
                 .HasForeignKey<Team>(t => t.ManagerId);
 
             modelBuilder.Entity<Match>()
