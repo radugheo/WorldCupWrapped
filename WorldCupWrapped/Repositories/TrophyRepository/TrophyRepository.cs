@@ -1,4 +1,5 @@
-﻿using WorldCupWrapped.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using WorldCupWrapped.Data;
 using WorldCupWrapped.Models;
 using WorldCupWrapped.Repository.GenericRepository;
 
@@ -9,6 +10,15 @@ namespace WorldCupWrapped.Repositories.TrophyRepository
         public TrophyRepository(ProjectContext context) : base(context)
         {
             
+        }
+        public Trophy FindTrophyByName(string name)
+        {
+            return _context.Trophies.FirstOrDefault(p => p.Name == name);
+        }
+
+        public async Task<List<Trophy>> GetAllTrophies()
+        {
+            return await _context.Trophies.ToListAsync();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using WorldCupWrapped.Helpers.Seeders;
 using WorldCupWrapped.Repositories.CityRepository;
 using WorldCupWrapped.Repositories.ManagerRepository;
 using WorldCupWrapped.Repositories.MatchRepository;
@@ -42,6 +43,17 @@ namespace WorldCupWrapped.Helpers.Extensions
             services.AddTransient<IRefereeService, RefereeService>();
             services.AddTransient<IStadiumService, StadiumService>();
             services.AddTransient<ITrophyService, TrophyService>();
+            return services;
+        }
+
+        public static IServiceCollection AddSeeders(this IServiceCollection services)
+        {
+            services.AddTransient<TrophySeeder>();
+            return services;
+        }
+
+        public static IServiceCollection AddUtils(this IServiceCollection services)
+        {
             return services;
         }
     }
