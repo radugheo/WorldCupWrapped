@@ -4,9 +4,9 @@ namespace WorldCupWrapped.Models
 {
     public class Match : BaseEntity
     {
-        public Team HomeTeam { get; set; }
+        public string HomeTeam { get; set; }
         public Guid HomeTeamId { get; set; }
-        public Team AwayTeam { get; set; }
+        public string AwayTeam { get; set; }
         public Guid AwayTeamId { get; set; }
         public string Date { get; set; }
         public Stadium? Stadium { get; set; }

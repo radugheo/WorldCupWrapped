@@ -8,6 +8,6 @@ namespace WorldCupWrapped.Models.DTOs.Player
         public TeamDto? Team { get; set; }
         public Guid? TeamId { get; set; }
         public string Name { get; set; }
-        public string Goals { get; set; }
+        public int Goals { get; set; }
     }
 }

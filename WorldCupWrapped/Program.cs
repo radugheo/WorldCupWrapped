@@ -1,6 +1,15 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using WorldCupWrapped.Data;
 using WorldCupWrapped.Helpers.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+ConfigureServices(
+    builder.Services,
+    builder.Configuration
+);
 
 // Add services to the container.
 
@@ -22,6 +31,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+//app.MapGet("/players", async (AppDbContext db) => await db.Players.ToListAsync()).Produces<List<Player>>(StatusCode.Status200OK);
 
 app.MapControllerRoute(
     name: "default",
@@ -30,3 +40,16 @@ app.MapControllerRoute(
 app.MapFallbackToFile("index.html"); ;
 
 app.Run();
+
+void ConfigureServices(IServiceCollection services, ConfigurationManager configManager)
+{
+    services.AddDbContext<ProjectContext>(
+        opts =>
+        {
+            opts.UseNpgsql(configManager.GetConnectionString("AppDb"));
+        }, ServiceLifetime.Transient);
+    /*services.AddDbContext<ProjectContext>(options =>
+        options.UseNpgsql(configManager.GetConnectionString("AppDb")));*/
+}
+
+
