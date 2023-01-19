@@ -12,8 +12,8 @@ using WorldCupWrapped.Data;
 namespace WorldCupWrapped.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20230118000834_testMigration")]
-    partial class testMigration
+    [Migration("20230119210557_migrare2")]
+    partial class migrare2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

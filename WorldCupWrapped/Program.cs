@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using WorldCupWrapped.Data;
 using WorldCupWrapped.Helpers.Extensions;
 
@@ -46,4 +48,8 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configM
         {
             opts.UseNpgsql(configManager.GetConnectionString("AppDb"));
         }, ServiceLifetime.Transient);
+    /*services.AddDbContext<ProjectContext>(options =>
+        options.UseNpgsql(configManager.GetConnectionString("AppDb")));*/
 }
+
+

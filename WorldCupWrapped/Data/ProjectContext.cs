@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using WorldCupWrapped.Models;
 
 namespace WorldCupWrapped.Data
@@ -15,16 +16,15 @@ namespace WorldCupWrapped.Data
         public DbSet<Referee> Referees { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<MatchReferee> MatchReferees { get; set; }
-
+        
         public ProjectContext(DbContextOptions<ProjectContext> options) : base(options)
         {
             
         }
 
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<TeamTrophy>()
                 .HasKey(t => new { t.TeamId, t.TrophyId });
 

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WorldCupWrapped.Migrations
 {
     /// <inheritdoc />
-    public partial class testMigration : Migration
+    public partial class migrare2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
