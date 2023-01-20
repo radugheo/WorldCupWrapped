@@ -1,25 +1,30 @@
-﻿using WorldCupWrapped.Models.DTOs.Team;
+﻿using AutoMapper;
+using WorldCupWrapped.Models.DTOs.Team;
+using WorldCupWrapped.Models.DTOs.Trophy;
+using WorldCupWrapped.Repositories.TeamRepository;
 
 namespace WorldCupWrapped.Services.TeamService
 {
     public class TeamService : ITeamService
     {
-        /*
+
         public ITeamRepository _teamRepository;
-        public TeamService(ITeamRepository teamRepository)
+        public IMapper _mapper;
+        public TeamService(ITeamRepository teamRepository, IMapper mapper)
         {
             _teamRepository = teamRepository;
+            _mapper = mapper;
         }
-        public Task<List<TeamDto>> GetAllTeams()
+        public async Task<List<TeamDto>> GetAllTeams()
         {
-            return _teamRepository.GetAll();
+            var teams = await _teamRepository.GetAllTeams();
+            var result = _mapper.Map<List<TeamDto>>(teams);
+
+            return result;
         }
-        public async Task DeleteTeam(Guid teamId)
+        public async Task<Task> UpdateTeams()
         {
-            var teamToDelete = await _teamRepository.FindByIdAsync(teamId);
-            _teamRepository.Delete(teamToDelete);
-            await _teamRepository.SaveAsync();
+            return _teamRepository.UpdateTeams();
         }
-        */
     }
 }

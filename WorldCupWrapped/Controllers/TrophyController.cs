@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WorldCupWrapped.Models;
 using WorldCupWrapped.Services.TrophyService;
 
 namespace WorldCupWrapped.Controllers

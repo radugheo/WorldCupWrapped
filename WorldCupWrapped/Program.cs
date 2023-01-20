@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Linq;
+using System.Net;
 using WorldCupWrapped.Data;
 using WorldCupWrapped.Helpers.Extensions;
 using WorldCupWrapped.Helpers.Seeders;
@@ -49,6 +51,31 @@ app.MapFallbackToFile("index.html"); ;
 
 app.Run();
 
+
+string WCLogin()
+{
+    var url = "http://api.cup2022.ir/api/v1/user/login";
+    var httpRequest = (HttpWebRequest)WebRequest.Create(url);
+    httpRequest.Method = "POST";
+    httpRequest.Accept = "application/json";
+    httpRequest.ContentType = "application/json";
+    var data = @"{
+              ""email"": ""radu2002ro@gmail.com"",
+              ""password"": ""worldCupApi2022""
+            }";
+    using (var streamWriter = new StreamWriter(httpRequest.GetRequestStream()))
+    {
+        streamWriter.Write(data);
+    }
+
+    var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+    var streamReader = new StreamReader(httpResponse.GetResponseStream());
+    var response = streamReader.ReadToEnd();
+    JObject joResponse = JObject.Parse(response);
+    var token = joResponse["data"]["token"];
+
+    return (string)token;
+}
 void SeedData(IHost app)
 {
     var scope = app.Services.GetService<IServiceScopeFactory>().CreateScope();
@@ -56,7 +83,8 @@ void SeedData(IHost app)
             scope.ServiceProvider.GetRequiredService
             <DbContextOptions<ProjectContext>>()))
     {
+        var token = WCLogin();
         var service = new TrophySeeder(context);
-        service.SeedInitialTrophies();
+        service.SeedInitialTrophies(token);
     }
 }

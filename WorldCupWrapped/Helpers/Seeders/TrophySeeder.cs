@@ -12,8 +12,9 @@ namespace WorldCupWrapped.Helpers.Seeders
             _projectContext = projectContext;
         }
 
-        public void SeedInitialTrophies()
+        public void SeedInitialTrophies(string token)
         {
+            System.Diagnostics.Debug.WriteLine("a ajuns la token: " + token);
             if (!_projectContext.Trophies.Any())
             {
                 var uefaEuro = new Trophy

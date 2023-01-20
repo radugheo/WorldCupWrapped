@@ -8,5 +8,6 @@ namespace WorldCupWrapped.Repositories.PlayerRepository
         public Task<List<Player>> GetPlayersByTeam(Guid teamId);
         Player FindPlayerByName(string name);
         public Task<List<Player>> GetAllPlayers();
+        //public Task UpdatePlayers(string startDate, string endDate);
     }
 }
