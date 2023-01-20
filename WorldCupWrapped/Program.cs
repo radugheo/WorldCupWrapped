@@ -1,37 +1,45 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.OpenApi.Models;
 using WorldCupWrapped.Data;
 using WorldCupWrapped.Helpers.Extensions;
+using WorldCupWrapped.Helpers.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
-ConfigureServices(
-    builder.Services,
-    builder.Configuration
-);
-
-// Add services to the container.
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddDbContext<ProjectContext>(opts => { opts.UseNpgsql(builder.Configuration.GetConnectionString("AppDb")); }, ServiceLifetime.Transient);
 builder.Services.AddControllersWithViews();
-
 builder.Services.AddRepositories();
 builder.Services.AddServices();
+builder.Services.AddSeeders();
+builder.Services.AddUtils();
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+});
 
 var app = builder.Build();
+SeedData(app);
 
-// Configure the HTTP request pipeline.
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+});
+
 if (!app.Environment.IsDevelopment())
 {
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-//app.MapGet("/players", async (AppDbContext db) => await db.Players.ToListAsync()).Produces<List<Player>>(StatusCode.Status200OK);
+//app.MapGet("/trophies", async (ProjectContext db) => await db.Trophies.ToListAsync()).Produces<List<Trophy>>;
 
 app.MapControllerRoute(
     name: "default",
@@ -41,15 +49,14 @@ app.MapFallbackToFile("index.html"); ;
 
 app.Run();
 
-void ConfigureServices(IServiceCollection services, ConfigurationManager configManager)
+void SeedData(IHost app)
 {
-    services.AddDbContext<ProjectContext>(
-        opts =>
-        {
-            opts.UseNpgsql(configManager.GetConnectionString("AppDb"));
-        }, ServiceLifetime.Transient);
-    /*services.AddDbContext<ProjectContext>(options =>
-        options.UseNpgsql(configManager.GetConnectionString("AppDb")));*/
+    var scope = app.Services.GetService<IServiceScopeFactory>().CreateScope();
+    using (var context = new ProjectContext(
+            scope.ServiceProvider.GetRequiredService
+            <DbContextOptions<ProjectContext>>()))
+    {
+        var service = new TrophySeeder(context);
+        service.SeedInitialTrophies();
+    }
 }
-
-

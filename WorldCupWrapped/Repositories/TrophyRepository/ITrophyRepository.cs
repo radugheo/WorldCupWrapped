@@ -5,6 +5,6 @@ namespace WorldCupWrapped.Repositories.TrophyRepository
 {
     public interface ITrophyRepository: IGenericRepository<Trophy>
     {
-        
+        public Task<List<Trophy>> GetAllTrophies();
     }
 }

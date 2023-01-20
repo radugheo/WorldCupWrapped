@@ -43,7 +43,7 @@ namespace WorldCupWrapped.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cities");
+                    b.ToTable("Cities", (string)null);
                 });
 
             modelBuilder.Entity("WorldCupWrapped.Models.Manager", b =>
@@ -71,7 +71,7 @@ namespace WorldCupWrapped.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Managers");
+                    b.ToTable("Managers", (string)null);
                 });
 
             modelBuilder.Entity("WorldCupWrapped.Models.Match", b =>
@@ -121,7 +121,7 @@ namespace WorldCupWrapped.Migrations
 
                     b.HasIndex("StadiumId");
 
-                    b.ToTable("Matches");
+                    b.ToTable("Matches", (string)null);
                 });
 
             modelBuilder.Entity("WorldCupWrapped.Models.MatchReferee", b =>
@@ -136,7 +136,7 @@ namespace WorldCupWrapped.Migrations
 
                     b.HasIndex("RefereeId");
 
-                    b.ToTable("MatchReferees");
+                    b.ToTable("MatchReferees", (string)null);
                 });
 
             modelBuilder.Entity("WorldCupWrapped.Models.Player", b =>
@@ -165,7 +165,7 @@ namespace WorldCupWrapped.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("Players");
+                    b.ToTable("Players", (string)null);
                 });
 
             modelBuilder.Entity("WorldCupWrapped.Models.Referee", b =>
@@ -190,7 +190,7 @@ namespace WorldCupWrapped.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Referees");
+                    b.ToTable("Referees", (string)null);
                 });
 
             modelBuilder.Entity("WorldCupWrapped.Models.Stadium", b =>
@@ -226,7 +226,7 @@ namespace WorldCupWrapped.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Stadiums");
+                    b.ToTable("Stadiums", (string)null);
                 });
 
             modelBuilder.Entity("WorldCupWrapped.Models.Team", b =>
@@ -277,7 +277,7 @@ namespace WorldCupWrapped.Migrations
                     b.HasIndex("ManagerId")
                         .IsUnique();
 
-                    b.ToTable("Teams");
+                    b.ToTable("Teams", (string)null);
                 });
 
             modelBuilder.Entity("WorldCupWrapped.Models.TeamTrophy", b =>
@@ -292,7 +292,7 @@ namespace WorldCupWrapped.Migrations
 
                     b.HasIndex("TrophyId");
 
-                    b.ToTable("TeamTrophies");
+                    b.ToTable("TeamTrophies", (string)null);
                 });
 
             modelBuilder.Entity("WorldCupWrapped.Models.Trophy", b =>
@@ -317,7 +317,7 @@ namespace WorldCupWrapped.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Trophies");
+                    b.ToTable("Trophies", (string)null);
                 });
 
             modelBuilder.Entity("WorldCupWrapped.Models.Match", b =>
