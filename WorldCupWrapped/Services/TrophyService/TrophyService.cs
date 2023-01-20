@@ -8,9 +8,10 @@ namespace WorldCupWrapped.Services.TrophyService
     {
         public ITrophyRepository _trophyRepository;
         public IMapper _mapper;
-        public TrophyService(ITrophyRepository trophyRepository)
+        public TrophyService(ITrophyRepository trophyRepository, IMapper mapper)
         {
             _trophyRepository = trophyRepository;
+            _mapper = mapper;
         }
         public async Task<List<TrophyDto>> GetAllTrophies()
         {
