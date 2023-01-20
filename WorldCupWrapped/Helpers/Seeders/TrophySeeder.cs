@@ -19,7 +19,7 @@ namespace WorldCupWrapped.Helpers.Seeders
                 var uefaEuro = new Trophy
                 {
                     Name = "UEFA Euro",
-                    Picture = "https://world-cup-wrapped.s3.amazonaws.com/trophies/euro.jpg"
+                    Picture = "https://world-cup-wrapped.s3.amazonaws.com/trophies/euro.jpg",
                 };
                 var fifaWorldCup = new Trophy
                 {

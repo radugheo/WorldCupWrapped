@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
-using WorldCupWrapped.Models.DTOs.Player;
 using WorldCupWrapped.Models.DTOs.Trophy;
-using WorldCupWrapped.Repositories.PlayerRepository;
 using WorldCupWrapped.Repositories.TrophyRepository;
-using WorldCupWrapped.Services.PlayerService;
 
 namespace WorldCupWrapped.Services.TrophyService
 {
@@ -17,8 +14,8 @@ namespace WorldCupWrapped.Services.TrophyService
         }
         public async Task<List<TrophyDto>> GetAllTrophies()
         {
-            var players = await _trophyRepository.GetAllTrophies();
-            List<TrophyDto> result = _mapper.Map<List<TrophyDto>>(players);
+            var trophies = await _trophyRepository.GetAllTrophies();
+            var result = _mapper.Map<List<TrophyDto>>(trophies);
 
             return result;
         }

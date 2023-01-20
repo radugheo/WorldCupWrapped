@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using WorldCupWrapped.Data;
 using WorldCupWrapped.Helpers.Extensions;
@@ -7,6 +6,7 @@ using WorldCupWrapped.Helpers.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<ProjectContext>(opts => { opts.UseNpgsql(builder.Configuration.GetConnectionString("AppDb")); }, ServiceLifetime.Transient);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRepositories();

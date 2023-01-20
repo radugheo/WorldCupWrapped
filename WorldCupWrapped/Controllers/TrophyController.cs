@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WorldCupWrapped.Services.PlayerService;
+using WorldCupWrapped.Models;
 using WorldCupWrapped.Services.TrophyService;
 
 namespace WorldCupWrapped.Controllers
@@ -14,9 +14,10 @@ namespace WorldCupWrapped.Controllers
             _trophyService = trophyService;
         }
         [HttpGet]
-        public IActionResult GetAllTrophies()
+        public async Task<IActionResult> GetAllTrophies()
         {
-            return Ok(_trophyService.GetAllTrophies());
+            var trophies = await _trophyService.GetAllTrophies();
+            return Ok(trophies);
         }
     }
 }
