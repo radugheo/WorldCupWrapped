@@ -5,7 +5,7 @@ namespace WorldCupWrapped.Services.TeamService
 {
     public interface ITeamService
     {
-        //Task<List<TeamDto>> GetAllTeams();
-        //public Task DeleteTeam(Guid teamId);
+        Task<List<TeamDto>> GetAllTeams();
+        public Task<Task> UpdateTeams();
     }
 }
