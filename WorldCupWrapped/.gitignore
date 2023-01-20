@@ -180,6 +180,8 @@ ClientBin/
 orleans.codegen.cs
 
 /node_modules
+#ignore .angular/cache
+/.angular/cache
 
 # RIA/Silverlight projects
 Generated_Code/
