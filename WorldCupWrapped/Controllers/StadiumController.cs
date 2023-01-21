@@ -18,5 +18,11 @@ namespace WorldCupWrapped.Controllers
             var stadiums = await _stadiumService.GetAllStadiums();
             return Ok(stadiums);
         }
+        [HttpGet("{city}")]
+        public async Task<IActionResult> GetStadiumsByCity(string city)
+        {
+            var stadiums = await _stadiumService.GetStadiumsByCity(city);
+            return Ok(stadiums);
+        }
     }
 }

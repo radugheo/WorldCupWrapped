@@ -20,5 +20,12 @@ namespace WorldCupWrapped.Services.StadiumService
 
             return result;
         }
+        public async Task<List<StadiumDto>> GetStadiumsByCity(string city)
+        {
+            var stadiums = await _stadiumRepository.GetStadiumsByCity(city);
+            var result = _mapper.Map<List<StadiumDto>>(stadiums);
+
+            return result;
+        }
     }
 }

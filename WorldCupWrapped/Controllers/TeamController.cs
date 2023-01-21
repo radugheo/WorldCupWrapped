@@ -31,5 +31,16 @@ namespace WorldCupWrapped.Controllers
             var teams = await _teamService.GetTeamsByGroupAndPosition(group, position);
             return Ok(teams);
         }
+        [HttpGet("{teamName}/trophies")]
+        public async Task<IActionResult> GetTeamTrophies(string teamName)
+        {
+            var trophies = await _teamService.GetTeamTrophies(teamName);
+            var result = new 
+            {
+                TeamName = teamName,
+                Trophies = trophies
+            };
+            return Ok(result);
+        }
     }
 }

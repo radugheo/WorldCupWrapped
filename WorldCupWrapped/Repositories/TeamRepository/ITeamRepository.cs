@@ -1,4 +1,5 @@
-﻿using WorldCupWrapped.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using WorldCupWrapped.Models;
 using WorldCupWrapped.Repository.GenericRepository;
 
 namespace WorldCupWrapped.Repositories.TeamRepository
@@ -10,6 +11,6 @@ namespace WorldCupWrapped.Repositories.TeamRepository
         public Task<List<Team>> GetTeamsByGroupAndPosition(string group, string groupRanking);
 
         public Task<List<Team>> GetAllTeams();
-        
+        public Task<List<TrophyCount>> GetTeamTrophies(string teamName);
     }
 }
