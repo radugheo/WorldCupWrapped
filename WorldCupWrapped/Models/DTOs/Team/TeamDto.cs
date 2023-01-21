@@ -1,4 +1,5 @@
-﻿using WorldCupWrapped.Models.DTOs.Player;
+﻿using WorldCupWrapped.Models.DTOs.Manager;
+using WorldCupWrapped.Models.DTOs.Player;
 using WorldCupWrapped.Models.DTOs.Trophy;
 
 namespace WorldCupWrapped.Models.DTOs.Team
@@ -13,7 +14,7 @@ namespace WorldCupWrapped.Models.DTOs.Team
         public string GroupRanking { get; set; }
         public string KnockoutRanking { get; set; }
         public string TopScorer { get; set; }
-        public string ManagerName { get; set; }
+        public Guid ManagerId { get; set; }
         public ICollection<PlayerDto> Players { get; set; }
         public ICollection<TrophyDto> Trophies { get; set; }
 
