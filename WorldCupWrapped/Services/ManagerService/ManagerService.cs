@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using WorldCupWrapped.Models.DTOs.Manager;
-using WorldCupWrapped.Models.DTOs.Trophy;
 using WorldCupWrapped.Repositories.ManagerRepository;
-using WorldCupWrapped.Repositories.TrophyRepository;
 
 namespace WorldCupWrapped.Services.ManagerService
 {

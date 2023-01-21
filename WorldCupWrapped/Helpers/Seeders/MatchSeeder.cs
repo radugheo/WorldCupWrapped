@@ -186,13 +186,13 @@ namespace WorldCupWrapped.Helpers.Seeders
 
                         readerA.Close();
 
-                        /*var MatchInfo = new Match
+                        var MatchInfo = new Match
                         {
                             HomeTeam = (string)joResponseMatch["data"][0]["home_team_en"],
                             HomeTeamId = _HomeTeamId,
                             AwayTeam = (string)joResponseMatch["data"][0]["away_team_en"],
                             AwayTeamId = _AwayTeamId,
-                        };*/
+                        };
                     }
                 }
             }

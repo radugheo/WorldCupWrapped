@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders.Physical;
-using Newtonsoft.Json.Linq;
-using System.Net;
+﻿using Microsoft.EntityFrameworkCore;
 using WorldCupWrapped.Data;
 using WorldCupWrapped.Models;
 using WorldCupWrapped.Repository.GenericRepository;
