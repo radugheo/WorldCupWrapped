@@ -4,6 +4,7 @@ using WorldCupWrapped.Models.DTOs.Manager;
 using WorldCupWrapped.Models.DTOs.Player;
 using WorldCupWrapped.Models.DTOs.Team;
 using WorldCupWrapped.Models.DTOs.Trophy;
+using WorldCupWrapped.Models.DTOs.Referee;
 
 namespace WorldCupWrapped.Helpers.Mapper
 {
@@ -19,6 +20,8 @@ namespace WorldCupWrapped.Helpers.Mapper
             CreateMap<PlayerDto, Player>();
             CreateMap<Trophy, TrophyDto>();
             CreateMap<TrophyDto, Trophy>();
+            CreateMap<Referee, RefereeDto>();
+            CreateMap<RefereeDto, Referee>();
         }
     }
 }

@@ -101,5 +101,8 @@ async Task SeedDataAsync(IHost app)
 
         var serviceTeam = new TeamSeeder(context);
         await serviceTeam.SeedInitialTeamsAsync(token);
+
+        var serviceReferee = new RefereeSeeder(context);
+        serviceReferee.SeedInitialReferees();
     }
 }
