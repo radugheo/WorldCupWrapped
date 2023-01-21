@@ -13,7 +13,7 @@ namespace WorldCupWrapped.Helpers.Seeders
             _projectContext = projectContext;
         }
 
-        public async void SeedInitialManagers()
+        public void SeedInitialManagers()
         {
             if (!_projectContext.Managers.Any())
             {

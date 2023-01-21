@@ -26,7 +26,7 @@ var app = builder.Build();
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
-SeedData(app);
+SeedDataAsync(app);
 
 app.UseSwagger();
 app.UseSwaggerUI(c =>
@@ -80,7 +80,7 @@ string WCLogin()
 
     return (string)token;
 }
-void SeedData(IHost app)
+async Task SeedDataAsync(IHost app)
 {
     var scope = app.Services.GetService<IServiceScopeFactory>().CreateScope();
     
@@ -90,13 +90,16 @@ void SeedData(IHost app)
     {
         var token = WCLogin();
         
-        var service = new TrophySeeder(context);
-        service.SeedInitialTrophies(token);
+        var serviceTrophy = new TrophySeeder(context);
+        serviceTrophy.SeedInitialTrophies();
         
         var serviceCity = new CitySeeder(context);
         serviceCity.SeedInitialCities();
 
         var serviceManager = new ManagerSeeder(context);
         serviceManager.SeedInitialManagers();
+
+        var serviceTeam = new TeamSeeder(context);
+        await serviceTeam.SeedInitialTeamsAsync(token);
     }
 }
