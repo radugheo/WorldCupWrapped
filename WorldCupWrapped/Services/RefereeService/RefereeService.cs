@@ -23,5 +23,12 @@ namespace WorldCupWrapped.Services.RefereeService
 
             return result;
         }
+        public async Task<List<RefereeDto>> GetRefereesByNationality(string nationality)
+        {
+            var referees = await _refereeRepository.GetRefereesByNationality(nationality);
+            var result = _mapper.Map<List<RefereeDto>>(referees);
+
+            return result;
+        }
     }
 }

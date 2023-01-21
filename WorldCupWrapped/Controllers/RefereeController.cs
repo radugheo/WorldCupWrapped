@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WorldCupWrapped.Models;
 using WorldCupWrapped.Services.RefereeService;
 
 namespace WorldCupWrapped.Controllers
@@ -15,8 +16,14 @@ namespace WorldCupWrapped.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllReferees()
         {
-            var trophies = await _RefereeService.GetAllReferees();
-            return Ok(trophies);
+            var referees = await _RefereeService.GetAllReferees();
+            return Ok(referees);
+        }
+        [HttpGet("{nationality}")]
+        public async Task<IActionResult> GetRefereesByNationality(string nationality)
+        {
+            var referees = await _RefereeService.GetRefereesByNationality(nationality);
+            return Ok(referees);
         }
     }
 }

@@ -19,12 +19,28 @@ namespace WorldCupWrapped.Controllers
             System.Diagnostics.Debug.WriteLine("salutare!!!");
             return Ok(teams);
         }
-        [HttpGet]
-        [Route("UpdateTeams")]
-        public async Task<IActionResult> UpdateTeams()
+        [HttpGet("{group}")]
+        public async Task<IActionResult> GetTeamsByGroup(string group)
         {
-            await _teamService.UpdateTeams();
-            return Ok();
+            var teams = await _teamService.GetTeamsByGroup(group);
+            return Ok(teams);
+        }
+        [HttpGet("{group}/{position}")]
+        public async Task<IActionResult> GetTeamsByGroupAndPosition(string group, string position)
+        {
+            var teams = await _teamService.GetTeamsByGroupAndPosition(group, position);
+            return Ok(teams);
+        }
+        [HttpGet("{teamName}/trophies")]
+        public async Task<IActionResult> GetTeamTrophies(string teamName)
+        {
+            var trophies = await _teamService.GetTeamTrophies(teamName);
+            var result = new 
+            {
+                TeamName = teamName,
+                Trophies = trophies
+            };
+            return Ok(result);
         }
     }
 }
