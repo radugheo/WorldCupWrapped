@@ -28,9 +28,6 @@ namespace WorldCupWrapped.Repositories.TeamRepository
         {
             return _table.ToList();
         }
-
-        public async Task UpdateTeams()
-        {
-        }
+        
     }
 }

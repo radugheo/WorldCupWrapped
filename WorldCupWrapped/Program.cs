@@ -5,7 +5,6 @@ using System.Net;
 using WorldCupWrapped.Data;
 using WorldCupWrapped.Helpers.Extensions;
 using WorldCupWrapped.Helpers.Seeders;
-using WorldCupWrapped.Repositories.ManagerRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,8 +43,6 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
-//app.MapGet("/trophies", async (ProjectContext db) => await db.Trophies.ToListAsync()).Produces<List<Trophy>>;
 
 app.MapControllerRoute(
     name: "default",
@@ -101,5 +98,11 @@ async Task SeedDataAsync(IHost app)
 
         var serviceTeam = new TeamSeeder(context);
         await serviceTeam.SeedInitialTeamsAsync(token);
+
+        var serviceStadium = new StadiumSeeder(context);
+        serviceStadium.SeedInitialStadiums();
+
+        var serviceTeamTrophy = new TeamTrophySeeder(context);
+        serviceTeamTrophy.SeedInitialTeamsTrophies();
     }
 }

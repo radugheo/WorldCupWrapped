@@ -9,5 +9,9 @@ namespace WorldCupWrapped.Repositories.StadiumRepository
         public StadiumRepository(ProjectContext context) : base(context)
         {
         }
+        public async Task<List<Stadium>> GetAllStadiums()
+        {
+            return _table.ToList();
+        }
     }
 }

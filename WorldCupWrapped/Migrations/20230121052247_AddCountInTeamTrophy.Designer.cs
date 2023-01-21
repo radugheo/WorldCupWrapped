@@ -12,8 +12,8 @@ using WorldCupWrapped.Data;
 namespace WorldCupWrapped.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20230119210557_migrare2")]
-    partial class migrare2
+    [Migration("20230121052247_AddCountInTeamTrophy")]
+    partial class AddCountInTeamTrophy
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -290,6 +290,9 @@ namespace WorldCupWrapped.Migrations
 
                     b.Property<Guid>("TrophyId")
                         .HasColumnType("uuid");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("integer");
 
                     b.HasKey("TeamId", "TrophyId");
 

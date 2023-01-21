@@ -5,7 +5,6 @@ namespace WorldCupWrapped.Repositories.StadiumRepository
 {
     public interface IStadiumRepository: IGenericRepository<Stadium>
     {
-        
-        
+        public Task<List<Stadium>> GetAllStadiums();
     }
 }

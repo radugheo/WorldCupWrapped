@@ -10,7 +10,6 @@ namespace WorldCupWrapped.Repositories.TeamRepository
         public Task<List<Team>> GetTeamsByGroupAndPosition(string group, string groupRanking);
 
         public Task<List<Team>> GetAllTeams();
-
-        public Task UpdateTeams();
+        
     }
 }
