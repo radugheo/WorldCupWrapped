@@ -10,9 +10,9 @@ namespace WorldCupWrapped.Repositories.RefereeRepository
         {
         }
 
-        public Referee GetRefereeFromMatchId(int matchId)
+        public async Task<List<Referee>> GetAllReferees()
         {
-            return _context.MatchReferees.Find(matchId).Referee;
+            return _table.ToList();
         }
     }
 }
