@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WorldCupWrapped.Data;
+﻿using WorldCupWrapped.Data;
 using WorldCupWrapped.Models;
 using WorldCupWrapped.Repository.GenericRepository;
 
