@@ -22,7 +22,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var app = builder.Build();
-SeedData(app);
+SeedDataAsync(app);
 
 app.UseSwagger();
 app.UseSwaggerUI(c =>
@@ -76,7 +76,7 @@ string WCLogin()
 
     return (string)token;
 }
-void SeedData(IHost app)
+async Task SeedDataAsync(IHost app)
 {
     var scope = app.Services.GetService<IServiceScopeFactory>().CreateScope();
     using (var context = new ProjectContext(
@@ -84,7 +84,10 @@ void SeedData(IHost app)
             <DbContextOptions<ProjectContext>>()))
     {
         var token = WCLogin();
-        var service = new TrophySeeder(context);
-        service.SeedInitialTrophies(token);
+        var trophyService = new TrophySeeder(context);
+        trophyService.SeedInitialTrophies();
+
+        var teamService = new TeamSeeder(context);
+        await teamService.SeedInitialTeamsAsync(token);
     }
 }
