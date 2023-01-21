@@ -104,5 +104,8 @@ async Task SeedDataAsync(IHost app)
 
         var serviceTeamTrophy = new TeamTrophySeeder(context);
         serviceTeamTrophy.SeedInitialTeamsTrophies();
+
+        var serviceReferee = new RefereeSeeder(context);
+        serviceReferee.SeedInitialReferees();
     }
 }

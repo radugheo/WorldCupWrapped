@@ -5,6 +5,6 @@ namespace WorldCupWrapped.Repositories.RefereeRepository
 {
     public interface IRefereeRepository: IGenericRepository<Referee>
     {
-        Referee GetRefereeFromMatchId(int matchId);
+        public Task<List<Referee>> GetAllReferees();
     }
 }
