@@ -5,7 +5,7 @@ namespace WorldCupWrapped.Repositories.ManagerRepository
 {
     public interface IManagerRepository: IGenericRepository<Manager>
     {
-        Task<List<Manager>> GetAllManagers();
+        public Task<List<Manager>> GetAllManagers();
         
     }
 }

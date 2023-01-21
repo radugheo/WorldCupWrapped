@@ -5,6 +5,7 @@ using System.Net;
 using WorldCupWrapped.Data;
 using WorldCupWrapped.Helpers.Extensions;
 using WorldCupWrapped.Helpers.Seeders;
+using WorldCupWrapped.Repositories.ManagerRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,9 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var app = builder.Build();
+
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 SeedData(app);
 
 app.UseSwagger();
@@ -79,12 +83,20 @@ string WCLogin()
 void SeedData(IHost app)
 {
     var scope = app.Services.GetService<IServiceScopeFactory>().CreateScope();
+    
     using (var context = new ProjectContext(
             scope.ServiceProvider.GetRequiredService
             <DbContextOptions<ProjectContext>>()))
     {
         var token = WCLogin();
+        
         var service = new TrophySeeder(context);
         service.SeedInitialTrophies(token);
+        
+        var serviceCity = new CitySeeder(context);
+        serviceCity.SeedInitialCities();
+
+        var serviceManager = new ManagerSeeder(context);
+        serviceManager.SeedInitialManagers();
     }
 }
