@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using WorldCupWrapped.Models.DTOs.Referee;
-using WorldCupWrapped.Models.DTOs.Trophy;
 using WorldCupWrapped.Repositories.RefereeRepository;
-using WorldCupWrapped.Repositories.TrophyRepository;
 
 namespace WorldCupWrapped.Services.RefereeService
 {

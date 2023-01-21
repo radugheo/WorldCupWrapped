@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WorldCupWrapped.Models;
 using WorldCupWrapped.Services.RefereeService;
 
 namespace WorldCupWrapped.Controllers

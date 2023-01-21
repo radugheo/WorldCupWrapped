@@ -1,8 +1,5 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using WorldCupWrapped.Models;
 using WorldCupWrapped.Models.DTOs.Team;
-using WorldCupWrapped.Models.DTOs.Trophy;
 using WorldCupWrapped.Models.DTOs.TrophyCount;
 using WorldCupWrapped.Repositories.TeamRepository;
 
