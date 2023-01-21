@@ -95,7 +95,6 @@ namespace WorldCupWrapped.Helpers.Seeders
                     matchStadiums[nr++] = (Guid)khalifaint["id"];
                     matchStadiums[nr++] = (Guid)ahmadbin["id"];
                     matchStadiums[nr++] = (Guid)althumana["id"];
-                    matchStadiums[nr++] = (Guid)albayt["id"];
                     matchStadiums[nr++] = (Guid)aljanoub["id"];
                     matchStadiums[nr++] = (Guid)stadium974["id"];
                     matchStadiums[nr++] = (Guid)educationcity["id"];
@@ -107,7 +106,9 @@ namespace WorldCupWrapped.Helpers.Seeders
                     matchStadiums[nr++] = (Guid)lusail["id"];
                     matchStadiums[nr++] = (Guid)albayt["id"];
                     matchStadiums[nr++] = (Guid)khalifaint["id"];
-                    matchStadiums[nr] = (Guid)lusail["id"];
+                    matchStadiums[nr++] = (Guid)lusail["id"];
+                    matchStadiums[nr] = (Guid)albayt["id"];
+
 
                     System.Diagnostics.Debug.WriteLine("INFO: a trecut de api-ul la stadioane!!!");
                 }
@@ -131,7 +132,7 @@ namespace WorldCupWrapped.Helpers.Seeders
                     if ((string)joResponseMatch["status"] == "success")
                     {
 
-                        System.Diagnostics.Debug.WriteLine("acum ar trebui sa inceapa asta cu select ul");
+                        //System.Diagnostics.Debug.WriteLine("acum ar trebui sa inceapa asta cu select ul");
 
                         var conn = new NpgsqlConnection("Host=wcw-database.cen3l3c0hkio.us-east-1.rds.amazonaws.com;Port=5432;Username=postgres;Password=adminadmin;Database=wcw-database;");
 
@@ -142,18 +143,18 @@ namespace WorldCupWrapped.Helpers.Seeders
 
                         //take parameter of connectionstring from appsettings.json
 
-                        System.Diagnostics.Debug.WriteLine("a facut selecturile bine");
+                        //System.Diagnostics.Debug.WriteLine("a facut selecturile bine");
 
                         var HomeTeamName = (string)joResponseMatch["data"][0]["home_team_en"];
                         var AwayTeamName = (string)joResponseMatch["data"][0]["away_team_en"];
 
-                        System.Diagnostics.Debug.WriteLine(HomeTeamName);
+                        //System.Diagnostics.Debug.WriteLine(HomeTeamName);
 
 
                         cmdH.Parameters.AddWithValue("@teamName", HomeTeamName);
                         cmdA.Parameters.AddWithValue("@teamName", AwayTeamName);
 
-                        System.Diagnostics.Debug.WriteLine("a asignat si teamName");
+                        //System.Diagnostics.Debug.WriteLine("a asignat si teamName");
 
                         var readerH = cmdH.ExecuteReader();
 
@@ -162,13 +163,13 @@ namespace WorldCupWrapped.Helpers.Seeders
 
                         Guid _HomeTeamId = new Guid(); 
 
-                        System.Diagnostics.Debug.WriteLine("urmeaza sa intre in reader");
+                        //System.Diagnostics.Debug.WriteLine("urmeaza sa intre in reader");
                         if(readerH.Read())
                         {
                             _HomeTeamId = readerH.GetGuid(0);
                         }
 
-                        System.Diagnostics.Debug.WriteLine("primul reader gata");
+                        //System.Diagnostics.Debug.WriteLine("primul reader gata");
 
                         //close readerh
 
@@ -192,9 +193,20 @@ namespace WorldCupWrapped.Helpers.Seeders
                             HomeTeamId = _HomeTeamId,
                             AwayTeam = (string)joResponseMatch["data"][0]["away_team_en"],
                             AwayTeamId = _AwayTeamId,
+                            Date = (string)joResponseMatch["data"][0]["local_date"],
+                            StadiumId = matchStadiums[i],
+                            HomeGoals = (int)joResponseMatch["data"][0]["home_score"],
+                            AwayGoals = (int)joResponseMatch["data"][0]["away_score"],
+                            Phase = (string)joResponseMatch["data"][0]["group"],
                         };
+
+                        System.Diagnostics.Debug.WriteLine(MatchInfo.HomeTeam + " versus " + MatchInfo.AwayTeam + " in " + MatchInfo.StadiumId + " la data de " + MatchInfo.Date + " in faza " + MatchInfo.Phase + " cu scorul " + MatchInfo.HomeGoals + " - " + MatchInfo.AwayGoals);
+                        _projectContext.Matches.Add(MatchInfo);
                     }
+
                 }
+
+                _projectContext.SaveChanges();
             }
         }
     }
