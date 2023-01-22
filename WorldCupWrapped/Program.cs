@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Linq;
 using System.Net;
@@ -17,6 +18,7 @@ builder.Services.AddRepositories();
 builder.Services.AddServices();
 builder.Services.AddSeeders();
 builder.Services.AddUtils();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
 builder.Services.AddSwaggerGen(c =>
@@ -112,5 +114,5 @@ async Task SeedDataAsync(IHost app)
     serviceReferee.SeedInitialReferees();
 
     var serviceMatches = new MatchSeeder(context);
-    await serviceMatches.SeedInitialMatchesAsync(token);
+    await serviceMatches.SeedInitialMatchesAsync(token, builder.Configuration.GetConnectionString("AppDb"));
 }

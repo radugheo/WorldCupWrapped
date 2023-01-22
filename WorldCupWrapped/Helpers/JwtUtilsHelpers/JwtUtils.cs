@@ -19,8 +19,9 @@ namespace WorldCupWrapped.Helpers.JwtUtilsHelpers
         public string GenerateJwtToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
+            System.Diagnostics.Debug.WriteLine("E AICI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + _appSettings.JwtToken);
             var appPrivateKey = Encoding.ASCII.GetBytes(_appSettings.JwtToken);
-
+            
             var tokenDesriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]

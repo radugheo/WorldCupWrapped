@@ -65,20 +65,5 @@ namespace WorldCupWrapped.Controllers
             }
             return Ok();
         }
-
-        [Authorization(Role.Admin)]
-        [HttpGet("admin")]
-        public IActionResult GetAllAdmin()
-        {
-            var users = _userService.GetAllUsers();
-            return Ok(users);
-        }
-
-        [Authorization(Role.User)]
-        [HttpGet("user")]
-        public IActionResult GetAllUser()
-        {
-            return Ok("User");
-        }
     }
 }
