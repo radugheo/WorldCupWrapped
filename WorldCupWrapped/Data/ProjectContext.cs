@@ -16,7 +16,8 @@ namespace WorldCupWrapped.Data
         public DbSet<Referee> Referees { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<MatchReferee> MatchReferees { get; set; }
-        
+        public DbSet<User> Users { get; set; }
+
         public ProjectContext(DbContextOptions<ProjectContext> options) : base(options)
         {
             
