@@ -17,7 +17,7 @@ namespace WorldCupWrapped.Helpers.Seeders
             _projectContext = projectContext;
         }
 
-        public async Task SeedInitialMatchesAsync(string token)
+        public async Task SeedInitialMatchesAsync(string token, string _connectionStrings)
         {
             if (!_projectContext.Matches.Any())
             {
@@ -134,7 +134,7 @@ namespace WorldCupWrapped.Helpers.Seeders
 
                         //System.Diagnostics.Debug.WriteLine("acum ar trebui sa inceapa asta cu select ul");
 
-                        var conn = new NpgsqlConnection("Host=wcw-database.cen3l3c0hkio.us-east-1.rds.amazonaws.com;Port=5432;Username=postgres;Password=adminadmin;Database=wcw-database;");
+                        var conn = new NpgsqlConnection(_connectionStrings);
 
                         conn.Open();
 
