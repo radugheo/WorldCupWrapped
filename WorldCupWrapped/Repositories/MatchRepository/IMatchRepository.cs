@@ -5,6 +5,8 @@ namespace WorldCupWrapped.Repositories.MatchRepository
 {
     public interface IMatchRepository : IGenericRepository<Match>
     {
-        //public Task<List<Match>> GetMatchesByTeamId(Guid teamId);
+        public Task<List<Match>> GetAllMatches();
+
+        public Task<List<Match>> GetMatchesByGroup(string group);
     }
 }

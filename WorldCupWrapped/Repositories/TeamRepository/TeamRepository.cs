@@ -9,6 +9,7 @@ namespace WorldCupWrapped.Repositories.TeamRepository
     {
         public TeamRepository(ProjectContext context) : base(context)
         {
+            
         }
 
         public async Task<List<Team>> GetTeamsByGroup(string group)

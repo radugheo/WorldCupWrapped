@@ -107,5 +107,8 @@ async Task SeedDataAsync(IHost app)
 
         var serviceReferee = new RefereeSeeder(context);
         serviceReferee.SeedInitialReferees();
+
+        var serviceMatches = new MatchSeeder(context);
+        await serviceMatches.SeedInitialMatchesAsync(token);
     }
 }

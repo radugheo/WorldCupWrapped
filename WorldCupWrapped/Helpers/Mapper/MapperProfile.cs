@@ -7,6 +7,7 @@ using WorldCupWrapped.Models.DTOs.Team;
 using WorldCupWrapped.Models.DTOs.Trophy;
 using WorldCupWrapped.Models.DTOs.Referee;
 using WorldCupWrapped.Models.DTOs.TrophyCount;
+using WorldCupWrapped.Models.DTOs.Match;
 
 namespace WorldCupWrapped.Helpers.Mapper
 {
@@ -28,6 +29,9 @@ namespace WorldCupWrapped.Helpers.Mapper
             CreateMap<StadiumDto, Stadium>();
             CreateMap<TrophyCount, TrophyCountDto>();
             CreateMap<TrophyCountDto, TrophyCount>();
+            CreateMap<Match, MatchDto>();
+            CreateMap<MatchDto, Match>();
+
         }
     }
 }

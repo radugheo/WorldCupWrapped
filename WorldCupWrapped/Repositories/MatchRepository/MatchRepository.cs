@@ -19,5 +19,17 @@ namespace WorldCupWrapped.Repositories.MatchRepository
            
         }
         */
+
+        public async Task<List<Match>> GetAllMatches()
+        {
+            return _table.ToList();
+        }
+
+
+        public async Task<List<Match>> GetMatchesByGroup(string group)
+        {
+            return _table.Where(m => m.Phase == group).ToList();
+        }
+
     }
 }
