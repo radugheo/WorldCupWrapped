@@ -1,9 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using WorldCupWrapped.Data;
+using WorldCupWrapped.Helpers;
 using WorldCupWrapped.Helpers.Extensions;
+using WorldCupWrapped.Helpers.Middleware;
 using WorldCupWrapped.Helpers.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +18,8 @@ builder.Services.AddRepositories();
 builder.Services.AddServices();
 builder.Services.AddSeeders();
 builder.Services.AddUtils();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -43,13 +48,14 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
+app.UseAuthorization();
+app.UseMiddleware<JwtMiddleware>();
+app.MapControllers();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html"); ;
-
 app.Run();
 
 
@@ -80,35 +86,33 @@ string WCLogin()
 async Task SeedDataAsync(IHost app)
 {
     var scope = app.Services.GetService<IServiceScopeFactory>().CreateScope();
-    
-    using (var context = new ProjectContext(
+
+    using var context = new ProjectContext(
             scope.ServiceProvider.GetRequiredService
-            <DbContextOptions<ProjectContext>>()))
-    {
-        var token = WCLogin();
-        
-        var serviceTrophy = new TrophySeeder(context);
-        serviceTrophy.SeedInitialTrophies();
-        
-        var serviceCity = new CitySeeder(context);
-        serviceCity.SeedInitialCities();
+            <DbContextOptions<ProjectContext>>());
+    var token = WCLogin();
 
-        var serviceManager = new ManagerSeeder(context);
-        serviceManager.SeedInitialManagers();
+    var serviceTrophy = new TrophySeeder(context);
+    serviceTrophy.SeedInitialTrophies();
 
-        var serviceTeam = new TeamSeeder(context);
-        await serviceTeam.SeedInitialTeamsAsync(token);
+    var serviceCity = new CitySeeder(context);
+    serviceCity.SeedInitialCities();
 
-        var serviceStadium = new StadiumSeeder(context);
-        serviceStadium.SeedInitialStadiums();
+    var serviceManager = new ManagerSeeder(context);
+    serviceManager.SeedInitialManagers();
 
-        var serviceTeamTrophy = new TeamTrophySeeder(context);
-        serviceTeamTrophy.SeedInitialTeamsTrophies();
+    var serviceTeam = new TeamSeeder(context);
+    await serviceTeam.SeedInitialTeamsAsync(token);
 
-        var serviceReferee = new RefereeSeeder(context);
-        serviceReferee.SeedInitialReferees();
+    var serviceStadium = new StadiumSeeder(context);
+    serviceStadium.SeedInitialStadiums();
 
-        var serviceMatches = new MatchSeeder(context);
-        await serviceMatches.SeedInitialMatchesAsync(token);
-    }
+    var serviceTeamTrophy = new TeamTrophySeeder(context);
+    serviceTeamTrophy.SeedInitialTeamsTrophies();
+
+    var serviceReferee = new RefereeSeeder(context);
+    serviceReferee.SeedInitialReferees();
+
+    var serviceMatches = new MatchSeeder(context);
+    await serviceMatches.SeedInitialMatchesAsync(token, builder.Configuration.GetConnectionString("AppDb"));
 }
