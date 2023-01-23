@@ -36,12 +36,17 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\.angular\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\.angular\**" />
+    <EmbeddedResource Remove="ClientApp\.angular\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\.angular\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\.angular\" />
     <Folder Include="Data\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
