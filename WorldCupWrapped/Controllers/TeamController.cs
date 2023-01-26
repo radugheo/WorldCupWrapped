@@ -42,5 +42,17 @@ namespace WorldCupWrapped.Controllers
             };
             return Ok(result);
         }
+        [HttpDelete("delete-all-teams")]
+        public async Task<IActionResult> DeleteAllTeams()
+        {
+            _teamService.DeleteAll();
+            return Ok();
+        }
+        [HttpDelete("delete-teams-by-group/{group}")]
+        public async Task<IActionResult> DeleteTeamsByGroup(string group)
+        {
+            _teamService.DeleteTeamsByGroup(group);
+            return Ok();
+        }
     }
 }

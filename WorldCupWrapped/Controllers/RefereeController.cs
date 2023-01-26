@@ -24,5 +24,11 @@ namespace WorldCupWrapped.Controllers
             var referees = await _RefereeService.GetRefereesByNationality(nationality);
             return Ok(referees);
         }
+        [HttpDelete("delete-all-referees")]
+        public async Task<IActionResult> DeleteAllReferees()
+        {
+            _RefereeService.DeleteAll();
+            return Ok();
+        }
     }
 }

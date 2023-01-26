@@ -17,10 +17,6 @@ namespace WorldCupWrapped.Helpers.Seeders
         {
             if (!_projectContext.Managers.Any())
             {
-                //creare lista de manageri
-
-                List<Manager> _managers = new List<Manager>();
-
                 List<Manager> managers = new List<Manager>();
                 System.Diagnostics.Debug.WriteLine("seeder manager");
 
@@ -321,13 +317,14 @@ namespace WorldCupWrapped.Helpers.Seeders
                 managers.Add(managerElvetia);
                 managers.Add(managerCamerun);
 
-                //for loop in managers
+                System.Diagnostics.Debug.WriteLine("INFO!!!!!!!! a adaugat managerii in array");
                 for (int i = 1; i <= 32; i++)
                 {
-                    _projectContext.Managers.Add(_managers[i]);
+                    _projectContext.Managers.Add(managers[i]);
                 }
+                System.Diagnostics.Debug.WriteLine("INFO!!!!!!!! a adaugat managerii in arrayul de context");
                 _projectContext.SaveChanges();
-
+                System.Diagnostics.Debug.WriteLine("ALERT!!!!!!!!!!! a bagat in BD");
             }
         }
     }

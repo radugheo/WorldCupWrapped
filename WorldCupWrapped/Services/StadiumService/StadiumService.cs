@@ -27,5 +27,10 @@ namespace WorldCupWrapped.Services.StadiumService
 
             return result;
         }
+        public void DeleteAll()
+        {
+            _stadiumRepository.DeleteAll();
+            _stadiumRepository.Save();
+        }
     }
 }

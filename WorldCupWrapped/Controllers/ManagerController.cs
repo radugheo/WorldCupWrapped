@@ -21,15 +21,20 @@ namespace WorldCupWrapped.Controllers
             _managerRepository = managerRepository;
         }
 
-        [HttpGet]
+        [HttpGet("get-all-managers")]
         public async Task<IActionResult> GetAllManagers()
         {
             var managers = await _managerRepository.GetAllManagers();
             System.Diagnostics.Debug.WriteLine("controller manager");
             return Ok(managers);
         }
-
-        //return the list of managers with the function from seeder
+        
+        [HttpDelete("delete-all-managers")]
+        public async Task<IActionResult> DeleteAllManagers()
+        {
+            _managerService.DeleteAll();
+            return Ok();
+        }
 
     }
 }

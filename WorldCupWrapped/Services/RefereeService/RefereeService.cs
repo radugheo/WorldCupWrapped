@@ -28,5 +28,10 @@ namespace WorldCupWrapped.Services.RefereeService
 
             return result;
         }
+        public void DeleteAll()
+        {
+            _refereeRepository.DeleteAll();
+            _refereeRepository.Save();
+        }
     }
 }

@@ -92,17 +92,17 @@ async Task SeedDataAsync(IHost app)
             <DbContextOptions<ProjectContext>>());
     var token = WCLogin();
 
-    var serviceTrophy = new TrophySeeder(context);
-    serviceTrophy.SeedInitialTrophies();
-
-    var serviceCity = new CitySeeder(context);
-    serviceCity.SeedInitialCities();
-
     var serviceManager = new ManagerSeeder(context);
     serviceManager.SeedInitialManagers();
 
+    var serviceTrophy = new TrophySeeder(context);
+    serviceTrophy.SeedInitialTrophies();
+
     var serviceTeam = new TeamSeeder(context);
     await serviceTeam.SeedInitialTeamsAsync(token);
+
+    var serviceCity = new CitySeeder(context);
+    serviceCity.SeedInitialCities();
 
     var serviceStadium = new StadiumSeeder(context);
     serviceStadium.SeedInitialStadiums();

@@ -174,7 +174,7 @@ ClientBin/
 ~$*
 *~
 *.dbmdl
-*.dbproj.schemaview
+*.dbproj.schemaviewg
 *.pfx
 *.publishsettings
 orleans.codegen.cs
@@ -184,6 +184,8 @@ orleans.codegen.cs
 /.angular/cache
 /.angular/cache/14.0.3
 /.angular/cache/*
+
+/Properties/launchSettings.json
 
 # RIA/Silverlight projects
 Generated_Code/

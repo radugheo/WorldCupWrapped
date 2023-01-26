@@ -15,11 +15,8 @@ namespace WorldCupWrapped.Repositories.ManagerRepository
         public async Task<List<Manager>> GetAllManagers()
         {
             var managers_unordered = await _table.ToListAsync();
-
-            //make new empty list of 32 managers
             List<Manager> managers = new List<Manager>
             {
-                //add the manager with name Felix Sanchez
                 new Manager() { Name = "", Nationality = "", Age = 0 },
                 managers_unordered.Find(m => m.Name == "Felix Sanchez"),
                 managers_unordered.Find(m => m.Name == "Gustavo Alfaro"),

@@ -43,5 +43,10 @@ namespace WorldCupWrapped.Repositories.TeamRepository
             }
             return trophies;
         }
+        public void DeleteTeamsByGroup(string group)
+        {
+            var teams = _context.Teams.Where(t => t.Group == group).ToList();
+            _context.Teams.RemoveRange(teams);
+        }
     }
 }

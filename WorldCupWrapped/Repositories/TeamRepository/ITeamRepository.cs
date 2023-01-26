@@ -12,5 +12,6 @@ namespace WorldCupWrapped.Repositories.TeamRepository
 
         public Task<List<Team>> GetAllTeams();
         public Task<List<TrophyCount>> GetTeamTrophies(string teamName);
+        public void DeleteTeamsByGroup(string group);
     }
 }
