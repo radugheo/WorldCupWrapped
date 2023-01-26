@@ -185,8 +185,6 @@ orleans.codegen.cs
 /.angular/cache/14.0.3
 /.angular/cache/*
 
-/Properties/launchSettings.json
-
 # RIA/Silverlight projects
 Generated_Code/
 
