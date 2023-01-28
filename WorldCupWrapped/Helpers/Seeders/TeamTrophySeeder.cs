@@ -57,7 +57,6 @@ namespace WorldCupWrapped.Helpers.Seeders
                     TrophyId = _projectContext.Trophies.FirstOrDefault(t => t.Name == "FIFA World Cup").Id,
                     Count = 1
                 };
-
                 //uefa euro winners
                 var teamTrophy8 = new TeamTrophy
                 {

@@ -68,6 +68,8 @@ dlldata.c
 # Chutzpah Test files
 _Chutzpah*
 
+launchSettings.json
+
 # Visual C++ cache files
 ipch/
 *.aps
@@ -174,7 +176,7 @@ ClientBin/
 ~$*
 *~
 *.dbmdl
-*.dbproj.schemaview
+*.dbproj.schemaviewg
 *.pfx
 *.publishsettings
 orleans.codegen.cs

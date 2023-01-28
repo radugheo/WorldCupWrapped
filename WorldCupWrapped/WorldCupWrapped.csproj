@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="AWSSDK.S3" Version="3.7.101.58" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Grpc.Core.Api" Version="2.51.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.10" />
@@ -41,6 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\.angular\" />
     <Folder Include="Data\" />
     <Folder Include="Migrations\" />
   </ItemGroup>

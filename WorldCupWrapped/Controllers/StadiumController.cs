@@ -24,5 +24,11 @@ namespace WorldCupWrapped.Controllers
             var stadiums = await _stadiumService.GetStadiumsByCity(city);
             return Ok(stadiums);
         }
+        [HttpDelete("delete-all-stadiums")]
+        public async Task<IActionResult> DeleteAllStadiums()
+        {
+            _stadiumService.DeleteAll();
+            return Ok();
+        }
     }
 }

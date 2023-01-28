@@ -32,7 +32,7 @@ namespace WorldCupWrapped.Controllers
                 Picture = user.Picture,
                 PasswordHash = BCryptNet.HashPassword(user.Password)
             };
-
+            _userService.UploadProfilePictureToS3(userToCreate);
             await _userService.Create(userToCreate);
             return Ok();
         }

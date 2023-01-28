@@ -1,0 +1,12 @@
+.sidenav-container {
+    height: 100%;
+  }
+  
+  .sidenav {
+    width: 250px;
+    background-color: #eb0808;
+  }
+  
+  .sidenav-content {
+    margin-left: 250px;
+  }

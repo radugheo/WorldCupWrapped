@@ -9,5 +9,7 @@ namespace WorldCupWrapped.Services.TeamService
         public Task<List<TeamDto>> GetTeamsByGroupAndPosition(string group, string groupRanking);
         Task<List<TeamDto>> GetAllTeams();
         public Task<List<TrophyCountDto>> GetTeamTrophies(string teamName);
+        void DeleteAll();
+        void DeleteTeamsByGroup(string group);
     }
 }

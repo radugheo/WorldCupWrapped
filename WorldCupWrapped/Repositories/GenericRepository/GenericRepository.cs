@@ -55,6 +55,10 @@ namespace WorldCupWrapped.Repository.GenericRepository
             _table.RemoveRange(entities);
         }
 
+        public void DeleteAll()
+        {
+            _table.RemoveRange(_table);
+        }
 
         public async Task<TEntity> FindByIdAsync(object id)
         {
@@ -77,6 +81,10 @@ namespace WorldCupWrapped.Repository.GenericRepository
                 Console.WriteLine(ex.Message);
             }
             return false;
+        }
+        public bool Save()
+        {
+            return _context.SaveChanges() > 0;
         }
     }
 }

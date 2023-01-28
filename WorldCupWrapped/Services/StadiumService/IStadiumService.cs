@@ -6,5 +6,6 @@ namespace WorldCupWrapped.Services.StadiumService
     {
         Task<List<StadiumDto>> GetAllStadiums();
         Task<List<StadiumDto>> GetStadiumsByCity(string city);
+        void DeleteAll();
     }
 }

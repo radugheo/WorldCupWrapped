@@ -9,5 +9,6 @@ namespace WorldCupWrapped.Services.UserService
         Task<List<User>> GetAllUsers();
         User GetById(Guid id);
         Task Create(User newUser);
+        void UploadProfilePictureToS3(User newUser);
     }
 }

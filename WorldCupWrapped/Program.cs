@@ -20,6 +20,10 @@ builder.Services.AddSeeders();
 builder.Services.AddUtils();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -56,6 +60,7 @@ app.MapControllerRoute(
     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html"); ;
+app.UseCors("corsapp");
 app.Run();
 
 
@@ -92,17 +97,17 @@ async Task SeedDataAsync(IHost app)
             <DbContextOptions<ProjectContext>>());
     var token = WCLogin();
 
-    var serviceTrophy = new TrophySeeder(context);
-    serviceTrophy.SeedInitialTrophies();
-
-    var serviceCity = new CitySeeder(context);
-    serviceCity.SeedInitialCities();
-
     var serviceManager = new ManagerSeeder(context);
     serviceManager.SeedInitialManagers();
 
+    var serviceTrophy = new TrophySeeder(context);
+    serviceTrophy.SeedInitialTrophies();
+
     var serviceTeam = new TeamSeeder(context);
     await serviceTeam.SeedInitialTeamsAsync(token);
+
+    var serviceCity = new CitySeeder(context);
+    serviceCity.SeedInitialCities();
 
     var serviceStadium = new StadiumSeeder(context);
     serviceStadium.SeedInitialStadiums();

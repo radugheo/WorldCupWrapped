@@ -43,5 +43,15 @@ namespace WorldCupWrapped.Services.TeamService
             
             return result;
         }
+        public void DeleteAll()
+        {
+            _teamRepository.DeleteAll();
+            _teamRepository.Save();
+        }
+        public void DeleteTeamsByGroup(string group)
+        {
+            _teamRepository.DeleteTeamsByGroup(group);
+            _teamRepository.Save();
+        }
     }
 }

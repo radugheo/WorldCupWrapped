@@ -20,5 +20,10 @@ namespace WorldCupWrapped.Services.ManagerService
 
             return result;
         }
+        public void DeleteAll()
+        {
+            _managerRepository.DeleteAll();
+            _managerRepository.Save();
+        }
     }
 }

@@ -12,9 +12,12 @@
         void Delete(TEntity entity);
         void DeleteRange(IEnumerable<TEntity> entities);
 
+        void DeleteAll();
+
         Task<TEntity> FindByIdAsync(object id);
         TEntity FindById(object id);
 
         Task<bool> SaveAsync();
+        bool Save();
     }
 }

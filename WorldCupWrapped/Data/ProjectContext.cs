@@ -32,12 +32,14 @@ namespace WorldCupWrapped.Data
             modelBuilder.Entity<TeamTrophy>()
                 .HasOne<Team>(tt => tt.Team)
                 .WithMany(t => t.TeamsTrophies)
-                .HasForeignKey(tt => tt.TeamId);
+                .HasForeignKey(tt => tt.TeamId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<TeamTrophy>()
                 .HasOne<Trophy>(tt => tt.Trophy)
                 .WithMany(t => t.TeamsTrophies)
-                .HasForeignKey(tt => tt.TrophyId);
+                .HasForeignKey(tt => tt.TrophyId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<MatchReferee>()
                 .HasKey(m => new { m.MatchId, m.RefereeId });
@@ -45,33 +47,47 @@ namespace WorldCupWrapped.Data
             modelBuilder.Entity<MatchReferee>()
                 .HasOne<Match>(mr => mr.Match)
                 .WithMany(m => m.MatchesReferees)
-                .HasForeignKey(mr => mr.MatchId);
+                .HasForeignKey(mr => mr.MatchId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<MatchReferee>()
                 .HasOne<Referee>(mr => mr.Referee)
                 .WithMany(r => r.MatchesReferees)
-                .HasForeignKey(mr => mr.RefereeId);
+                .HasForeignKey(mr => mr.RefereeId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Stadium>()
                 .HasOne(s => s.City)
                 .WithMany(c => c.Stadiums)
-                .HasForeignKey(s => s.CityId);
+                .HasForeignKey(s => s.CityId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Manager>()
                 .HasOne(m => m.Team)
                 .WithOne(t => t.Manager)
-                .HasForeignKey<Team>(t => t.ManagerId);
+                .HasForeignKey<Team>(t => t.ManagerId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Match>()
                 .HasOne(m => m.Stadium)
                 .WithMany(s => s.Matches)
-                .HasForeignKey(m => m.StadiumId);
+                .HasForeignKey(m => m.StadiumId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Team>()
                 .HasMany(t => t.Players)
                 .WithOne(p => p.Team)
-                .HasForeignKey(p => p.TeamId);
+                .HasForeignKey(p => p.TeamId)
+                .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Username)
+                .IsUnique();
+            
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
         }
+
     }
 }

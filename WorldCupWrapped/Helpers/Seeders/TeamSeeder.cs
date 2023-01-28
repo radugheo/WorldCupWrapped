@@ -17,9 +17,8 @@ namespace WorldCupWrapped.Helpers.Seeders
         public async Task SeedInitialTeamsAsync(string token)
         {
             if (!_projectContext.Teams.Any())
-            {
+            {    
                 System.Diagnostics.Debug.WriteLine("INFO: a ajuns la team seeder cu tokenul: " + token);
-
                 string[] teamGroupRankings = new string[33];
                 string[] teamKnockoutRankings = new string[33];
                 string[] teamTopScorer = new string[33];
@@ -28,7 +27,7 @@ namespace WorldCupWrapped.Helpers.Seeders
                 using (HttpClient client = new HttpClient())
                 {
                     client.BaseAddress = new Uri("https://localhost:7254/");
-                    HttpResponseMessage response = await client.GetAsync("api/Manager");
+                    HttpResponseMessage response = await client.GetAsync("api/Manager/get-all-managers");
                     response.EnsureSuccessStatusCode();
                     var responseBody = await response.Content.ReadAsStringAsync();
                     JArray json = JArray.Parse(responseBody);

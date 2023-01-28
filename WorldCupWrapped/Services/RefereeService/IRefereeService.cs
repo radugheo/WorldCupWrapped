@@ -7,5 +7,6 @@ namespace WorldCupWrapped.Services.RefereeService
         Task<List<RefereeDto>> GetAllReferees();
         Task<List<RefereeDto>> GetRefereesByNationality(string nationality);
 
+        void DeleteAll();
     }
 }

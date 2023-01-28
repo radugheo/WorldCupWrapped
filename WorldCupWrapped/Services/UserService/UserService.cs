@@ -41,5 +41,9 @@ namespace WorldCupWrapped.Services.UserService
         {
             return _userRepository.FindById(id);
         }
+        public void UploadProfilePictureToS3(User newUser)
+        {
+            _userRepository.UploadProfilePictureToS3(newUser);
+        }
     }
 }
