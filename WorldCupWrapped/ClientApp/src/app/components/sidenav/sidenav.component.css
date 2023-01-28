@@ -1,12 +1,52 @@
-.sidenav-container {
-    height: 100%;
-  }
-  
-  .sidenav {
-    width: 250px;
-    background-color: #eb0808;
-  }
-  
-  .sidenav-content {
-    margin-left: 250px;
-  }
+mat-sidenav-container {
+    height: calc(205vh - 115vh);
+}
+mat-sidenav{
+    width: 275px;
+    background-color: var(--color2);
+}
+mat-list{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+mat-list-item{
+    font-size: 20px;
+    font-family: "WorldCupFont";
+    color: black;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+mat-toolbar{
+    background-color: var(--color1);
+    color: white;
+    font-family: "WorldCupFont";
+    outline-style: outset;
+    outline-width: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+mat-toolbar-row > h4{
+    font-size: 55px;
+    font-weight: bold;
+    text-align: center;
+}
+.nav-link {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;
+    transition: padding 0.5s ease;
+    border-radius: 4px;
+}
+.active {
+    color: white;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: black;
+    padding-left: 10px;
+    background-color: var(--color1);
+}
+.logo-size{
+    width: 100px;
+    height: 100px;
+}

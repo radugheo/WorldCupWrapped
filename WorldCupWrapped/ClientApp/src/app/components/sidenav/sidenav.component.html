@@ -1,17 +1,24 @@
-<mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav mode="side" class="sidenav">
-        <p>vali suge pula</p>
-        <!-- <button mat-icon-button (click)="sidenav.toggle()">
-            <p>inchide sidebar</p>
-        </button> -->
-        <!-- <li class="sidenav-nav-item" *ngFor="let data of navData">
-            <a class="sidenav-nav-link" [routerLink]="[data.routeLink]">
-                <i class="sidenav-link-icon" [class]="data.icon"></i>
-                <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
-            </a>
-        </li> -->
-      </mat-sidenav>
-    <mat-sidenav-content class="sidenav-content">
-        <p>fac mult sex</p>
+<mat-toolbar>
+    <mat-toolbar-row>
+      <img src="https://imgur.com/9Ch87Mx.png" class="logo-size"><h4>World Cup Wrapped</h4>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav [(opened)] = "opened" mode="side">
+        <mat-list>
+            <mat-list-item><a routerLink="" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" ngClass="nav-link">Home</a></mat-list-item>
+            <mat-list-item><a routerLink="teams" routerLinkActive="active" ngClass="nav-link">Teams</a></mat-list-item>
+            <mat-list-item><a routerLink="groups" routerLinkActive="active" ngClass="nav-link">Groups</a></mat-list-item>
+            <mat-list-item><a routerLink="knockout" routerLinkActive="active" ngClass="nav-link">Knockout</a></mat-list-item>
+            <mat-list-item><a routerLink="matches" routerLinkActive="active" ngClass="nav-link">Matches</a></mat-list-item>
+            <mat-list-item><a routerLink="stadiums" routerLinkActive="active" ngClass="nav-link">Stadiums</a></mat-list-item>
+            <mat-list-item><a routerLink="referees" routerLinkActive="active" ngClass="nav-link">Referees</a></mat-list-item>
+            <mat-list-item><a routerLink="login" routerLinkActive="active" ngClass="nav-link">Login</a></mat-list-item>
+            <mat-list-item><a routerLink="register" routerLinkActive="active" ngClass="nav-link">Register</a></mat-list-item>
+        </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
+

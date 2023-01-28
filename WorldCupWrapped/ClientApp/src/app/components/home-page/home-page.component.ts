@@ -8,13 +8,8 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  async testFunction(): Promise<void> {
-     const data = await this.apiService.call("get", "Team");
-     console.log(data.data);
   }
 }

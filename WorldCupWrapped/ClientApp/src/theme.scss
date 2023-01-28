@@ -1,0 +1,14 @@
+@import '@angular/material/theming';
+
+// Define a custom theme
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+// You can also include additional styles for the components
+.custom-component {
+  color: mat-color($primary);
+}
