@@ -120,4 +120,7 @@ async Task SeedDataAsync(IHost app)
 
     var serviceMatches = new MatchSeeder(context);
     await serviceMatches.SeedInitialMatchesAsync(token, builder.Configuration.GetConnectionString("AppDb"));
+
+    var servicePlayer = new PlayerSeeder(context);
+    await servicePlayer.SeedInitialPlayersAsync(token, builder.Configuration.GetConnectionString("AppDb"));
 }
