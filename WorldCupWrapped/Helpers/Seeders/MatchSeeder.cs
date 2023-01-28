@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
 using Npgsql;
-using System.Configuration;
-using System.Data.SqlClient;
 using System.Net;
 using WorldCupWrapped.Data;
 using WorldCupWrapped.Models;

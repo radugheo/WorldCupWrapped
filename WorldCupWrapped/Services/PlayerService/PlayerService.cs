@@ -19,5 +19,12 @@ namespace WorldCupWrapped.Services.PlayerService
 
             return result;
         }
+
+        //delete all players
+        public void DeleteAll()
+        {
+            _playerRepository.DeleteAll();
+            _playerRepository.Save();
+        }
     }
 }

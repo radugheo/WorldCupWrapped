@@ -18,5 +18,13 @@ namespace WorldCupWrapped.Controllers
         {
             return Ok(_playerService.GetAllPlayers());
         }
+
+        //delete all players
+        [HttpDelete("delete-all-players")]
+        public async Task<IActionResult> DeleteAllPlayers()
+        {
+            _playerService.DeleteAll();
+            return Ok();
+        }
     }
 }
