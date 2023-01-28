@@ -25,7 +25,6 @@ namespace WorldCupWrapped.Repositories.UserRepository
             var bucketName = "world-cup-wrapped";
             var key = "profile-pictures/" + newUser.Username + ".jpg";
             transferUtility.Upload(filePath, bucketName, key);
-
         }
     }
 }

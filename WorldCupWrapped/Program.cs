@@ -20,6 +20,10 @@ builder.Services.AddSeeders();
 builder.Services.AddUtils();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -56,6 +60,7 @@ app.MapControllerRoute(
     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html"); ;
+app.UseCors("corsapp");
 app.Run();
 
 
