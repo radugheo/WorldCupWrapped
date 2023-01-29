@@ -14,10 +14,10 @@
 
 .team-card::before{
     content: "";
-    background-image: url('https://assets.bwbx.io/images/users/iqjWHBFdfxIU/idao2nO4S8oQ/v1/-1x-1.jpg');
+    background-image: url('https://st3.depositphotos.com/6396642/15828/v/450/depositphotos_158281374-stock-illustration-football-2018-russian-world-cup.jpg');
     background-position: center;
     background-size: cover;
-    opacity: 0.2;
+    opacity: 0.5;
     top: 0px;
     right: 0px;
     bottom: 0px;
@@ -46,6 +46,6 @@
     position: relative;
 }
 
-#first-team-card-element{
+.team-card-element{
     margin-top: 16px;
 }
