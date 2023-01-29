@@ -19,6 +19,8 @@ import { StadiumsComponent } from './components/stadiums/stadiums.component';
 import { RefereesComponent } from './components/referees/referees.component';
 import { MatchesComponent } from './components/matches/matches.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PlayersComponent } from './components/players/players.component';
+import { ArraySortPipe } from './pipes/sort-by.pipe';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { RegisterComponent } from './components/register/register.component';
     TeamsComponent,
     MatchesComponent,
     RegisterComponent,
+    PlayersComponent,
+    ArraySortPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -46,6 +50,7 @@ import { RegisterComponent } from './components/register/register.component';
     RouterModule.forRoot([
       { path: '', component: HomePageComponent, pathMatch: 'full' },
       { path: 'teams', component: TeamsComponent},
+      { path: 'players', component: PlayersComponent},
       { path: 'groups', component: GroupsComponent },
       { path: 'knockout', component: KnockoutComponent},
       { path: 'matches', component: MatchesComponent},
