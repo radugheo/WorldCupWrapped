@@ -14,9 +14,11 @@ namespace WorldCupWrapped.Controllers
             _playerService = playerService;
         }
         [HttpGet]
-        public IActionResult GetAllPlayers()
+        public async Task<IActionResult> GetAllPlayers()
         {
-            return Ok(_playerService.GetAllPlayers());
+            var players = await _playerService.GetAllPlayers();
+            return Ok(players);
+            
         }
 
         //delete all players

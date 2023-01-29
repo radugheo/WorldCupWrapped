@@ -1,0 +1,18 @@
+<table>
+    <tr>
+      <th id = "place"></th>
+      <th id = "name">Name</th>
+      <th>Country</th>
+      <th>Goals</th>
+    </tr>
+    <tr *ngFor="let player of players | sort: 'goals'; let i = index;">
+        <td id = "place">{{i + 1}}. </td>
+        <td>
+            <img class="flag" src="{{ player.flag }}" alt="{{ player.name }}'s flag">
+            {{ player.name }}
+          </td>
+          <td>{{ player.country }} </td>
+          <td>{{ player.goals }}</td>
+    </tr>
+  </table>
+  
