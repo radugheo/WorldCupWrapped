@@ -1,3 +1,12 @@
-<div *ngFor="let team of teams">
-    <h3>Name: {{ team.name }}</h3>
+<div class="team-grid">
+    <div class="team-card" *ngFor="let team of teams">
+        <img class="flag" src="{{ team.flag }}" alt="{{ team.name }} flag" />
+        <h2 class="world-cup-font team-card-element">{{ team.name }} ({{team.fifaName}})</h2>
+        <p class="world-cup-font team-card-element">Manager: {{team.manager}} </p>
+        <p class="world-cup-font team-card-element">Top scorer: {{ team.topScorer }}</p>
+        <p class="world-cup-font team-card-element">World Cups: {{ team.worldCups }}</p>
+        <p class="world-cup-font team-card-element">Other trophies: </p>
+        <p class="world-cup-font team-card-element">Group: {{team.group}}</p>
+        <p class="world-cup-font team-card-element">Ranking: {{team.knockoutRanking}}</p>
+    </div>
 </div>

@@ -1,0 +1,51 @@
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.team-card {
+    width: 25%; 
+    padding: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.team-card::before{
+    content: "";
+    background-image: url('https://st3.depositphotos.com/6396642/15828/v/450/depositphotos_158281374-stock-illustration-football-2018-russian-world-cup.jpg');
+    background-position: center;
+    background-size: cover;
+    opacity: 0.5;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+.team-card-element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.world-cup-font{
+    font-family: "WorldCupFont";
+}
+
+.flag{
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 3px;
+    display: block;
+    margin: auto;
+    position: relative;
+}
+
+.team-card-element{
+    margin-top: 16px;
+}
