@@ -129,7 +129,8 @@ namespace WorldCupWrapped.Helpers.Seeders
                                 //string nume_jucator = Regex.Replace(jucator, @"[^a-zA-Z]", "");
                                 string nume_jucator = new string(jucator.Where(char.IsLetter).ToArray());
                                 nume_jucator = Regex.Replace(nume_jucator, "([A-Z])", " $1");
-                                nume_jucator = nume_jucator.Substring(1);
+                                if (nume_jucator[0] == ' ')
+                                    nume_jucator = nume_jucator.Substring(1);
 
                                 bool exists_already = lista_jucatori.Any(p => p.Name == nume_jucator);
 
@@ -176,7 +177,8 @@ namespace WorldCupWrapped.Helpers.Seeders
                                 System.Text.RegularExpressions.Match match = Regex.Match(jucator, @"\d+");
                                 string nume_jucator = new string(jucator.Where(char.IsLetter).ToArray());
                                 nume_jucator = Regex.Replace(nume_jucator, "([A-Z])", " $1");
-                                nume_jucator = nume_jucator.Substring(1);
+                                if (nume_jucator[0] == ' ')
+                                    nume_jucator = nume_jucator.Substring(1);
 
                                 bool exists_already = lista_jucatori.Any(p => p.Name == nume_jucator);
 
@@ -238,6 +240,10 @@ namespace WorldCupWrapped.Helpers.Seeders
                 lista_jucatori.RemoveAt(109);
                 lista_jucatori[87].Name = "Juan Pablo Vargas";
                 lista_jucatori.RemoveAt(81);
+                //find the player with name Frenkiede Jong
+                Player player = lista_jucatori.Find(p => p.Name == "Frenkiede Jong");
+                player.Name = "Frenkie de Jong";
+
 
 
 

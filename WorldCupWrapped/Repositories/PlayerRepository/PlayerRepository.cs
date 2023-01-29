@@ -24,7 +24,7 @@ namespace WorldCupWrapped.Repositories.PlayerRepository
 
         public async Task<List<Player>> GetAllPlayers()
         {
-            return await _context.Players.ToListAsync();
+            return _table.ToList();
         }
 
         /*public async Task UpdatePlayers(string startDate, string endDate)

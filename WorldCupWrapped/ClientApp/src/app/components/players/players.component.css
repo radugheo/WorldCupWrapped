@@ -1,0 +1,70 @@
+/* Overall table style */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    border-spacing: 0;
+}
+  tr{
+    background-image: url('https://as1.ftcdn.net/v2/jpg/05/34/64/66/1000_F_534646639_OlUXOBujnbEMQAw678TbzihXIhmJNFcd.jpg');
+    /* background-position: center; */
+    background-size: cover;
+    /* move the background up */
+    background-position: 0 -26px;
+  }
+  /* Table head style */
+  th {
+    font-family: 'WorldCupFont';
+    color: white;
+    text-align: left;
+  }
+
+  #name{
+    color:#000;
+  }
+  
+  /* Table head cell style */
+  th {
+    padding: 1rem;
+  }
+  
+  /* Table body style */
+  td {
+    background-color: #F5F5F5; /* Light gray color */
+  }
+  
+  /* Table body row style */
+  tr {
+    border-bottom: 1px solid #D3D3D3; /* Light gray color */
+  }
+  
+  /* Table body cell style */
+  td {
+    padding: 1rem;
+  }
+
+  .flag{
+    width: 50px;
+    height: 35px;
+    border: 1px solid #000;
+    border-radius: 3px;
+  }
+  .flag img{
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Adding World Cup font for the content */
+    td {
+        padding: 1rem;
+        font-family: 'WorldCupFont';
+    }
+
+   #place{
+    position: relative;
+    font-family: 'WorldCupFont';
+    padding: 0.5rem;
+    margin: 0;
+   }
+
