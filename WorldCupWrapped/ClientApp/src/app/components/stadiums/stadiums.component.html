@@ -1,1 +1,21 @@
-<p>stadiums works!</p>
+<div class = "all-page">
+    <!-- add title here -->
+    <div class="title">
+        <h1>Stadiums</h1>
+    <div class="stadiums-container" *ngFor="let stadium of stadiums">
+        <div class="stadium">
+            <div class="left-section">
+            <img [src]="stadium.picture" alt="Stadium Photo">
+            </div>
+        <div class="center-section">
+            <!-- A little football here -->
+        </div>
+        <div class="right-section">
+            <h3 class ="name-text">{{stadium.name}}</h3>
+            <p class ="text">City: {{stadium.cityName}}</p>
+            <p class ="text">Foundation Year: {{stadium.foundationYear}}</p>
+            <p class ="text">Capacity: {{stadium.capacity}}</p>
+        </div>
+    </div>
+  </div>
+</div>

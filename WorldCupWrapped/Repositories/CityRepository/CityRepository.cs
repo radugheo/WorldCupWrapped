@@ -14,5 +14,10 @@ namespace WorldCupWrapped.Repositories.CityRepository
         {
             return _context.Cities.FirstOrDefault(c => c.Name == name);
         }
+
+        public async Task<List<City>> GetAllCities()
+        {
+            return _table.ToList();
+        }
     }
 }

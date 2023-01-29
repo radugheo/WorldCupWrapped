@@ -1,0 +1,108 @@
+.stadiums-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .stadium {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .left-section, .right-section {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .left-section {
+    padding-right: 20px;
+  }
+  
+  .right-section {
+    padding-left: 20px;
+  }
+
+  .center-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+  
+  #little-photo {
+    width: 40px;
+    height: 40px;
+    margin: 0 20px;
+  }
+
+  .name-text{
+    font-size: 50px;
+    font-weight: bold;
+    /* world cup font */
+    font-family: 'WorldCupFont';
+    color: var(--color1);
+  }
+  .text{
+    font-size: 30px;
+    font-weight: bold;
+    /* world cup font */
+    font-family: 'WorldCupFont';
+    color: var(--color1);
+  }
+
+  /* Make borders for the whole stadium section */
+
+  .stadium {
+    border: 1px solid var(--color1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-image: url('https://st3.depositphotos.com/6396642/15828/v/450/depositphotos_158281374-stock-illustration-football-2018-russian-world-cup.jpg');
+    background-position: center;
+    background-size: cover;
+    }
+
+    .title{
+        font-size: 40px;
+        font-weight: bold;
+        /* world cup font */
+        font-family: 'WorldCupFont';
+        color: var(--color1);
+        /* center it */
+        text-align: center;
+        margin: 20px 0;
+    }
+    .stadium {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin: 10px;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+      }
+      
+      .stadium:hover {
+        transform: scale(1.01);
+box-shadow: 0px 0px 15px 0px #aaa;
+      }
+      
+
+      .stadium:hover .center-section:before {
+        content: "";
+        background-image: url('https://www.qatar2022.qa/sites/default/files/2022-08/al-bayt-transparent.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      
