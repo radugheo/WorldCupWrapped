@@ -12,6 +12,7 @@ export class TeamsComponent implements OnInit{
   teams: any;
   async ngOnInit(): Promise<void> {
     this.teams = await this.getTeams();
+    this.teams[0].imageUrl = 'https://assets.bwbx.io/images/users/iqjWHBFdfxIU/idao2nO4S8oQ/v1/-1x-1.jpg';
     console.log(this.teams);
   }
   async getTeams(): Promise<AxiosResponse> {
