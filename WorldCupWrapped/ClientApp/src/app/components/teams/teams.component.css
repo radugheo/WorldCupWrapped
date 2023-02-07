@@ -44,8 +44,21 @@
     display: block;
     margin: auto;
     position: relative;
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+
 }
 
 .team-card-element{
     margin-top: 16px;
+}
+
+.team-name{
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-family: "WorldCupFont";
+    color: black;
+    text-align: center;
+
 }
