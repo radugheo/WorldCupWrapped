@@ -1,4 +1,3 @@
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -21,6 +20,7 @@ import { MatchesComponent } from './components/matches/matches.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PlayersComponent } from './components/players/players.component';
 import { ArraySortPipe } from './pipes/sort-by.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,6 +47,8 @@ import { ArraySortPipe } from './pipes/sort-by.pipe';
     MatIconModule,
     FormsModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomePageComponent, pathMatch: 'full' },
       { path: 'teams', component: TeamsComponent},
