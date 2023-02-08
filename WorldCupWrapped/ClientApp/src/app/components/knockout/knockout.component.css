@@ -1,0 +1,59 @@
+.bracket {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .final,
+  .semi-final,
+  .quarter-final,
+  .round-of-16 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+  }
+  
+  .match-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .team-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .team-card {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+
+  }
+  
+  .team-name {
+    text-align: center;
+    font-family: "WorldCupFont";
+    margin-bottom: 10px;
+  }
+  
+  .vs {
+    font-weight: bold;
+    margin: 0 20px;
+  }
+  

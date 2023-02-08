@@ -27,6 +27,7 @@ export class GroupsComponent implements OnInit {
       const data = await this.getMatches(groupName);
       this.matches.push({ name: groupName, matches: data });
     }
+    console.log(this.matches);
   }
 
   async getGroup(groupName: any): Promise<any[]> {

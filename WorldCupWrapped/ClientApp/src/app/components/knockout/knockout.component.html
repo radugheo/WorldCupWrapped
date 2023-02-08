@@ -1,0 +1,74 @@
+<div class="bracket">
+    <div class="final">
+      <p class="match-title">Final</p>
+        <div *ngFor="let categ of matches" class="match-card">
+            <div *ngIf="categ.name === final" class="match-card"> 
+                <div class="team-container">
+                   <div class="team-card">
+                        <p class="team-name">Team 1</p>
+                   </div>
+                    <p class="vs">vs</p>
+                    <div class="team-card">
+                        <p class="team-name">Team 2</p>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <div class="semi-final">
+        <p class="match-title">Semi-Final</p>
+            <div *ngFor="let categ of matches" class="match-card">
+                <div *ngIf="categ.name === semi" class="match-card"> 
+                    <div class="team-container">
+                        <div class="team-card">
+                            <p class="team-name">Team 1</p>
+                        </div>
+                        <p class="vs">vs</p>
+                        <div class="team-card">
+                            <p class="team-name">Team 2</p>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    <div class="quarter-final">
+      <p class="match-title">Quarter-finals</p>
+      <div class="team-container">
+        <div class="team-card">
+          <p class="team-name">Team 7</p>
+        </div>
+        <p class="vs">vs</p>
+        <div class="team-card">
+          <p class="team-name">Team 8</p>
+        </div>
+      </div>
+      <div class="team-container">
+        <div class="team-card">
+          <p class="team-name">Team 9</p>
+        </div>
+        <p class="vs">vs</p>
+        <div class="team-card">
+          <p class="team-name">Team 10</p>
+        </div>
+      </div>
+      <div class="team-container">
+        <div class="team-card">
+          <p class="team-name">Team 11</p>
+        </div>
+        <p class="vs">vs</p>
+        <div class="team-card">
+          <p class="team-name">Team 12</p>
+        </div>
+      </div>
+      <div class="team-container">
+        <div class="team-card">
+          <p class="team-name">Team 13</p>
+        </div>
+        <p class="vs">vs</p>
+        <div class="team-card">
+          <p class="team-name">Team 14</p>
+        </div>
+      </div>
+    </div>
+
+</div>

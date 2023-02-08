@@ -1,19 +1,44 @@
 <h1 id="title">FIFA WORLD CUP 2022 STANDINGS</h1>
 <div id="groups-grid">
-    <div *ngFor="let group of groups" class ="group-card" (mouseenter)="showMatches(group.name)" (mouseleave)="hideMatches()">
-        <h2 class ="group-name">{{group.name}}</h2>
+    <div *ngFor="let group of groups" class ="group-card">
+        <h2 class ="group-name">Group {{group.name}}</h2>
         <div class="teams-container">
             <div *ngFor="let team of group.teams; let i = index" [ngClass]="{'highlighted': i < 2}" class="team-card">
             <img class="team-flag" src="{{ team.flag }}" alt="{{ team.name }} flag" />
             <h3 class ="team-name">{{team.name}}</h3>
             <p class ="team-group-ranking">Group Ranking: {{team.groupRanking}}</p>
             </div>
-        </div>
-        <div *ngIf="showGroupMatches === true" class="matches-container">
-            <div *ngFor="let match of matches" class="match-card">
-            <div *ngIf="match.phase === group.name" class="match-card"> 
-                <p> SALUT </p>
-            </div>
+            <div class="matches-container">
+                <div *ngFor="let categ of matches" class="match-card">
+                <div *ngIf="categ.name === group.name" class="match-card"> 
+                    <!-- <div *ngFor="let team of group.teams; let i = index" [ngClass]="{'highlighted': i < 2}" class="team-card">
+                        <p class = "ranking-row">{{team.groupRanking}}. <img class="little-flag-ranking" src="{{ team.flag }}" alt="{{ team.name }} flag" /> {{team.name}} </p>
+                    
+                    </div>   -->
+                    <table id ="little-ranking">
+                        <tr>
+                            <th id = "place"></th>
+                            <th id = "name">Name</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr *ngFor="let team of group.teams; let i = index"  [ngClass]="{'highlighted': i < 2}">
+                            <td id = "place">{{i + 1}}.</td>
+                            <td>
+                                <img class="little-flag-ranking" src="{{ team.flag }}" alt="{{ team.name }}'s flag">
+                                {{ team.name }}
+                            </td>
+                            <td id = "status">
+                                <p *ngIf="i < 2">Q</p>
+                                <p *ngIf="i >= 2">NQ</p>
+                            </td>
+
+                        </tr>
+                    </table>
+                    <div *ngFor="let match of categ.matches; let first = first" [ngClass]="{'first-match': first}" class="match">
+                        <p class="match-info">{{match.homeTeam}} {{match.homeGoals}} - {{match.awayGoals}} {{match.awayTeam}}</p>
+                    </div> 
+                </div>
+                </div>
             </div>
         </div>
     </div>
