@@ -14,4 +14,10 @@ body {
     --color3: #49BCE3;
     --color4: #1077C3;
     font-family: 'Roboto';
+    overflow: hidden;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
