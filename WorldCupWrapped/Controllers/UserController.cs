@@ -5,6 +5,10 @@ using WorldCupWrapped.Models.Enums;
 using WorldCupWrapped.Models;
 using BCryptNet = BCrypt.Net.BCrypt;
 using WorldCupWrapped.Services.UserService;
+using System.Runtime.CompilerServices;
+using WorldCupWrapped.Data;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace WorldCupWrapped.Controllers
 {
@@ -13,10 +17,12 @@ namespace WorldCupWrapped.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly ProjectContext _context;
 
-        public UsersController(IUserService userService)
+        public UsersController(IUserService userService, ProjectContext context)
         {
             _userService = userService;
+            _context = context;
         }
 
         [HttpPost("create-user")]
@@ -32,7 +38,12 @@ namespace WorldCupWrapped.Controllers
                 Picture = user.Picture,
                 PasswordHash = BCryptNet.HashPassword(user.Password)
             };
-            _userService.UploadProfilePictureToS3(userToCreate);
+            if (await _context.Users.AnyAsync(x => x.Username == userToCreate.Username))
+            {
+                return BadRequest("User with the same username already exists");
+            }
+            await _userService.UploadProfilePictureToS3(userToCreate);
+            userToCreate.Picture = "https://world-cup-wrapped.s3.amazonaws.com/profile-pictures/" + userToCreate.Username + ".png";
             await _userService.Create(userToCreate);
             return Ok();
         }
