@@ -22,8 +22,26 @@ export class KnockoutComponent {
     this.teams = await this.getTeams();
     for (const groupName of ["FIN", "semi", "QR", "R16"]) {
       const data = await this.getMatches(groupName);
-      this.matches.push({ name: groupName, matches: data });
+      this.matches.push({ name: groupName, matches: data.sort((a, b) => {
+        if(a.date < b.date) 
+          if(groupName == this.final || groupName == this.qr)
+            return 1;
+          else return -1;
+        if(a.date > b.date)
+          if(groupName == this.final || groupName == this.qr)
+            return -1;
+          else return 1;
+        return 0;
+      }) });
     }
+    // swap the matches 3 and 6 and 4 and 5 from round of 16
+    let temp = this.matches[3].matches[2];
+    this.matches[3].matches[2] = this.matches[3].matches[5];
+    this.matches[3].matches[5] = temp;
+
+    temp = this.matches[3].matches[3];
+    this.matches[3].matches[3] = this.matches[3].matches[4];
+    this.matches[3].matches[4] = temp;
     console.log(this.matches);
   }
 
