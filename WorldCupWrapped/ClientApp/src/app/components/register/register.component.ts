@@ -1,41 +1,71 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { RegisterService } from 'src/app/services/register.service';
+import UserRequestRegister from 'src/models/UserRequestRegister';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit{
-  // registerForm: FormGroup;
-  // file: File;
-  constructor() { 
-    
-  }
-  ngOnInit(): void {
-    
-  }
-  onSubmit() {
-    // if (this.registerForm.valid) {
-    //   const formData = new FormData();
-    //   formData.append('username', this.registerForm.get('username').value);
-    //   formData.append('password', this.registerForm.get('password').value);
-    //   formData.append('email', this.registerForm.get('email').value);
-    //   formData.append('firstName', this.registerForm.get('firstName').value);
-    //   formData.append('lastName', this.registerForm.get('lastName').value);
-    //   formData.append('picture', this.file);
+export class RegisterComponent implements OnInit {
+  registerForm: FormGroup = new FormGroup({});
+  submitted = false;
+  picture: File | null = null;
 
-    //   // this.http.post('/api/register', formData).subscribe((response) => {
-    //   //   console.log(response);
-    //   //   // handle the response
-    //   // }, (error) => {
-    //   //   console.log(error);
-    //   //   // handle the error
-    //   // });
-    // }
+  constructor(private formBuilder: FormBuilder, private registerService: RegisterService) { }
+
+  ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.email]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+    });
   }
 
-  // uploadFile(event) {
-  //   this.file = event.target.files[0];
-  // }
+  get f() { return this.registerForm.controls; }
+
+  onFileChange(event: any) {
+    this.picture = event.target.files[0];
+  }
+
+  async onSubmit() {
+    this.submitted = true;
+
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    if (!this.picture) {
+      return alert("Please select a profile picture");
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(this.picture);
+    reader.onload = async () => {
+      let pictureBase64 = reader.result as string;
+      pictureBase64.slice(pictureBase64.toString().indexOf(',') + 1);
+      const dto: UserRequestRegister ={
+        username: this.f.username.value,
+        password: this.f.password.value,
+        email: this.f.email.value,
+        firstName: this.f.firstName.value,
+        lastName: this.f.lastName.value,
+        picture: pictureBase64
+      };
+      const response = await this.registerService.registerUser(dto);
+      if (response.status === 200)
+        alert(`User has been registered successfully!`);
+      else if (response.status === 400)
+        alert(`User already exists!`);
+      else
+        alert(`Error registering user: ${JSON.stringify(response)}`);
+    };
+    reader.onerror = (error) => {
+      console.error(error);
+      alert("Error reading the picture. Please try again");
+    };
+  }
 }

@@ -4,6 +4,7 @@ using WorldCupWrapped.Repository.GenericRepository;
 using Amazon.S3;
 using Amazon.S3.Transfer;
 using Amazon.Runtime;
+using Amazon.S3.Model;
 
 namespace WorldCupWrapped.Repositories.UserRepository
 {
@@ -16,15 +17,21 @@ namespace WorldCupWrapped.Repositories.UserRepository
         {
             return _table.FirstOrDefault(x => x.Username == username);
         }
-        public void UploadProfilePictureToS3(User newUser)
+        public async Task UploadProfilePictureToS3(User newUser)
         {
             var credentials = new EnvironmentVariablesAWSCredentials();
             var s3Client = new AmazonS3Client(credentials);
-            var transferUtility = new TransferUtility(s3Client);
-            var filePath = "C:/Users/radu2/Desktop/TESTS3.txt";
-            var bucketName = "world-cup-wrapped";
-            var key = "profile-pictures/" + newUser.Username + ".jpg";
-            transferUtility.Upload(filePath, bucketName, key);
+            int startIndex = newUser.Picture.IndexOf(',') + 1;
+            string base64String = newUser.Picture.Substring(startIndex);
+            System.Diagnostics.Debug.WriteLine("POZA: poza este: " + base64String);
+            var request = new PutObjectRequest
+            {
+                BucketName = "world-cup-wrapped",
+                Key = "profile-pictures/" + newUser.Username + ".png",
+                ContentType = "image/png",
+                InputStream = new MemoryStream(Convert.FromBase64String(base64String))
+            };
+            await s3Client.PutObjectAsync(request);
         }
     }
 }
