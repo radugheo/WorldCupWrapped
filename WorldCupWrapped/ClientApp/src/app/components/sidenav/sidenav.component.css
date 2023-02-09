@@ -4,6 +4,11 @@ mat-sidenav-container {
 mat-sidenav{
     width: 275px;
     background-color: var(--color2);
+    color: var(--color2);
+    font-family: "WorldCupFont";
+    padding-top: 30px;
+    padding-bottom: 30px;
+    
 }
 mat-list{
     padding-top: 0px;
@@ -43,6 +48,8 @@ mat-toolbar-row > h4{
     outline-style: solid;
     outline-width: 1px;
     outline-color: black;
+    /* i want to see it above anything else */
+    padding: 10px 20px;
     padding-left: 10px;
     background-color: var(--color1);
 }
