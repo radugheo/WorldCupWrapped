@@ -1,0 +1,71 @@
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 50px auto;
+    max-width: 500px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #444444;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="file"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #dddddd;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+  
+  .invalid-feedback {
+    color: #f44336;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  button.btn {
+    background-color: #4CAF50;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+  button.btn:hover {
+    background-color: #3e8e41;
+  }
+  
+  .mrr {
+    font-family: 'WorldCupFont';
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    line-height: 40px;
+    text-align: center;
+    font-size: 30px;
+    color: #444444;
+    
+  }
+  

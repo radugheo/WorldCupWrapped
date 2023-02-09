@@ -1,20 +1,60 @@
 <div class="bracket">
-  <div class="final">
-    <p class="match-title">Final</p>
-        <div *ngFor="let categ of matches" class="match-card">
-            <div *ngIf="categ.name === final"> 
-              <div *ngFor="let match of categ.matches" class="team-container">
-                    <div  class="team-card">
-                        <p class="team-name">{{match.homeTeam}}</p>
-                    </div>
-                    <p class="vs">vs</p>
-                    <div class="team-card">
-                        <p class="team-name">{{match.awayTeam}}</p>
-                    </div>
-              </div>
-            </div>  
-        </div>
-  </div>
+    <div class="round-of-16">
+        <p class="match-title">Round of 16</p>
+            <div *ngFor="let categ of matches" class="match-card">
+                <div *ngIf="categ.name === r16"> 
+                  <div *ngFor="let match of categ.matches" class="team-container">
+                        <div  class="team-card">
+                            <p class="team-name">{{match.homeTeam}} </p>
+                            <div *ngFor="let team of teams">
+                              <div *ngIf="team.name === match.homeTeam">
+                                  <img class="flag" src="{{team.flag}}" alt="flag">
+                              </div>  
+                          </div>
+                        </div>
+                        <p class ="team-goals">{{match.homeGoals}}</p>
+                        <p class="vs">-</p>
+                        <p class ="team-goals">{{match.awayGoals}}</p>
+                        <div class="team-card">
+                            <p class="team-name">{{match.awayTeam}}</p>
+                            <div *ngFor="let team of teams">
+                              <div *ngIf="team.name === match.awayTeam">
+                                  <img class="flag" src="{{team.flag}}" alt="flag">
+                              </div>  
+                          </div>
+                        </div>
+                  </div>
+                </div>  
+            </div>
+      </div>
+      <div class="quarter-final">
+        <p class="match-title">Quarter-Final</p>
+            <div *ngFor="let categ of matches" class="match-card">
+                <div *ngIf="categ.name === qr"> 
+                  <div *ngFor="let match of categ.matches" class="team-container">
+                        <div  class="team-card">
+                            <p class="team-name">{{match.homeTeam}}</p>
+                            <div *ngFor="let team of teams">
+                              <div *ngIf="team.name === match.homeTeam">
+                                  <img class="flag" src="{{team.flag}}" alt="flag">
+                              </div>  
+                          </div>
+                        </div>
+                        <p class ="team-goals">{{match.homeGoals}}</p>
+                        <p class="vs">-</p>
+                        <p class ="team-goals">{{match.awayGoals}}</p>
+                        <div class="team-card">
+                            <p class="team-name">{{match.awayTeam}}</p>
+                            <div *ngFor="let team of teams">
+                              <div *ngIf="team.name === match.awayTeam">
+                                  <img class="flag" src="{{team.flag}}" alt="flag">
+                              </div>  
+                          </div>
+                        </div>
+                  </div>
+                </div>  
+            </div>
+      </div>
     <div class="semi-final">
         <p class="match-title">Semi-Final</p>
             <div *ngFor="let categ of matches" class="match-card">
@@ -22,45 +62,55 @@
                   <div *ngFor="let match of categ.matches" class="team-container">
                         <div  class="team-card">
                             <p class="team-name">{{match.homeTeam}}</p>
+                            <div *ngFor="let team of teams">
+                                <div *ngIf="team.name === match.homeTeam">
+                                    <img class="flag" src="{{team.flag}}" alt="flag">
+                                </div>  
+                            </div>
                         </div>
-                        <p class="vs">vs</p>
+                        <p class ="team-goals">{{match.homeGoals}}</p>
+                        <p class="vs">-</p>
+                        <p class ="team-goals">{{match.awayGoals}}</p>
                         <div class="team-card">
                             <p class="team-name">{{match.awayTeam}}</p>
+                            <div *ngFor="let team of teams">
+                                <div *ngIf="team.name === match.awayTeam">
+                                    <img class="flag" src="{{team.flag}}" alt="flag">
+                                </div>  
+                            </div>
                         </div>
                   </div>
                 </div>  
             </div>
     </div>
-    <div class="quarter-final">
-      <p class="match-title">Quarter-Final</p>
-          <div *ngFor="let categ of matches" class="match-card">
-              <div *ngIf="categ.name === qr"> 
-                <div *ngFor="let match of categ.matches" class="team-container">
-                      <div  class="team-card">
-                          <p class="team-name">{{match.homeTeam}}</p>
-                      </div>
-                      <p class="vs">vs</p>
-                      <div class="team-card">
-                          <p class="team-name">{{match.awayTeam}}</p>
-                      </div>
-                </div>
-              </div>  
-          </div>
-    </div>
-    <div class="round-of-16">
-      <p class="match-title">Round of 16</p>
-          <div *ngFor="let categ of matches" class="match-card">
-              <div *ngIf="categ.name === r16"> 
-                <div *ngFor="let match of categ.matches" class="team-container">
-                      <div  class="team-card">
-                          <p class="team-name">{{match.homeTeam}}</p>
-                      </div>
-                      <p class="vs">vs</p>
-                      <div class="team-card">
-                          <p class="team-name">{{match.awayTeam}}</p>
-                      </div>
-                </div>
-              </div>  
-          </div>
-    </div>
+    <div class="final">
+        <p class="match-title">Final</p>
+            <div *ngFor="let categ of matches" class="match-card">
+                <div *ngIf="categ.name === final"> 
+                  <div *ngFor="let match of categ.matches" class="team-container">
+                        <div  class="team-card">
+                            <p class="team-name">{{match.homeTeam}}</p>
+                            <!-- search for its flag in this.teams where its name is match.homeTeam -->
+                            <div *ngFor="let team of teams">
+                                <div *ngIf="team.name === match.homeTeam">
+                                    <img class="flag" src="{{team.flag}}" alt="flag">
+                                </div>  
+                            </div>
+                        </div>
+                        <p class ="team-goals">{{match.homeGoals}}</p>
+                        <p class="vs">-</p>
+                        <p class ="team-goals">{{match.awayGoals}}</p>
+                        <div class="team-card">
+                            <p class="team-name">{{match.awayTeam}}</p>
+                            <div *ngFor="let team of teams">
+                                <div *ngIf="team.name === match.awayTeam">
+                                    <img class="flag" src="{{team.flag}}" alt="flag">
+                                </div>  
+                            </div>
+                        </div>
+                  </div>
+                </div>  
+            </div>
+      </div>
+      <div class ="bracket-background"></div>
 </div>

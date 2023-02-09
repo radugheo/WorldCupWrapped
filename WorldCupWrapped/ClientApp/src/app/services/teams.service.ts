@@ -15,6 +15,11 @@ export class TeamService {
         return data.data;
     }
 
+    async getGroup(groupName:string): Promise<Team> {
+        const data = await this.apiService.call("get", `Team/${groupName}`);
+        return data.data;
+    }
+
     async getTrophies(teamName: string): Promise<TeamTrophyResponse> {
       const data = await this.apiService.call("get", `Team/${teamName}/trophies`);
       // console.log(`aici sunt trofeele pentru ${teamName}: ${JSON.stringify(data.data)}`);

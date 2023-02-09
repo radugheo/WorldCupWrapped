@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AxiosResponse } from 'axios';
-import { ApiService } from 'src/app/services/api.service';
 import { ArraySortPipe } from 'src/app/pipes/sort-by.pipe';
+import { TeamService } from 'src/app/services/teams.service';
+import { PlayerService} from 'src/app/services/players.service';
+ 
 
 @Component({
   selector: 'app-players',
@@ -10,13 +11,21 @@ import { ArraySortPipe } from 'src/app/pipes/sort-by.pipe';
   providers: [ArraySortPipe]
 })
 export class PlayersComponent implements OnInit{
-  constructor(private apiService: ApiService) { }
+  constructor(private teamService: TeamService, private playerService: PlayerService) { }
   players: any;
   teams: any;
   async ngOnInit(): Promise<void> {
 
-    this.players = await this.getPlayers();
-    this.teams = await this.getTeams();
+    await this.playerService.getPlayers().then(players => {
+      this.players = players;
+      console.log(this.players);
+    });
+
+    await this.teamService.getTeams().then(teams => {
+      this.teams = teams;
+      console.log(this.teams);
+    });
+
     this.players.forEach((player: {
       country: any; teamId: any; flag: any; 
 }) => {
@@ -25,16 +34,6 @@ export class PlayersComponent implements OnInit{
       player.country = team.name;
     });
     console.log(this.players);
-  }
-  async getPlayers(): Promise<AxiosResponse> {
-    const data = await this.apiService.call("get", "Player");
-    console.log(data.data);
-    return data.data;
-  }
-
-  async getTeams(): Promise<AxiosResponse> {
-    const data = await this.apiService.call("get", "Team");
-    return data.data;
   }
 }
 

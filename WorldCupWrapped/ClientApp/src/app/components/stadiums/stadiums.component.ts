@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AxiosResponse } from 'axios';
-import { ApiService } from 'src/app/services/api.service';
+import { StadiumService } from 'src/app/services/stadiums.service';
+import { CityService } from 'src/app/services/cities.service';
+
 
 @Component({
   selector: 'app-stadiums',
@@ -9,13 +10,21 @@ import { ApiService } from 'src/app/services/api.service';
 })
 
 export class StadiumsComponent {
-  constructor(private apiService: ApiService) { }
+  constructor(private stadiumService: StadiumService, private cityService: CityService) { }
   stadiums : any;
   cities : any;
 
   async ngOnInit(): Promise<void>{
-    this.stadiums = await this.getStadiums();
-    this.cities = await this.getCities();
+
+    await this.stadiumService.getStadiums().then(stadiums => {
+      this.stadiums = stadiums;
+      console.log(this.stadiums);
+    });
+
+    await this.cityService.getCities().then(cities => {
+      this.cities = cities;
+      console.log(this.cities);
+    });
     //for every stadium, add the city name to the stadium object, as stadium.cityId = city.id
     this.stadiums.forEach((stadium: any) => {
       stadium.cityName = this.cities.find((city: any) => city.id === stadium.cityId).name;
@@ -27,18 +36,6 @@ export class StadiumsComponent {
     console.log(this.stadiums);
 
   };
-
-  async getStadiums(): Promise<AxiosResponse>{
-    const data = await this.apiService.call('get', 'Stadium');
-    console.log(data.data);
-    return data.data;
-  }
-
-  async getCities(): Promise<AxiosResponse>{
-    const data = await this.apiService.call('get', 'City/get-all-cities');
-    console.log(data.data);
-    return data.data;
-  }
 
   toggleExpanded(stadium: any){
     // Set the selected stadium to expanded

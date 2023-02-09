@@ -16,10 +16,18 @@ export class KnockoutComponent {
   qr:String = "QR";
   r16:String = "R16";
   teams: any;
+  
 
   async ngOnInit(): Promise<void>{
     this.matches = [];
     this.teams = await this.getTeams();
+    //add for each team its flag
+    this.teams.forEach((team: { fifaName: any; flag: any; }) => {
+      const flag = this.teams.find((_team: { fifaName: any; flag: any; }) => _team.fifaName === team.fifaName);
+    });
+
+    console.log(this.teams);
+    
     for (const groupName of ["FIN", "semi", "QR", "R16"]) {
       const data = await this.getMatches(groupName);
       this.matches.push({ name: groupName, matches: data.sort((a, b) => {
