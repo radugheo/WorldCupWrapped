@@ -74,7 +74,7 @@ namespace WorldCupWrapped.Controllers
             {
                 return BadRequest("Username or password is invalid!");
             }
-            return Ok();
+            return Ok(response);
         }
     }
 }
